@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 112" fill="none" role="img" aria-label="Short North Studio">
+  <path d="M2 15 V2 H90" stroke="#F7F5F0" stroke-width="5" stroke-linecap="square"/>
+  <text x="0" y="40" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" fill="#F7F5F0">short</text>
+  <text x="0" y="74" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" fill="#C2572E">north</text>
+  <path d="M2 84 V96 H150" stroke="#F7F5F0" stroke-width="5" stroke-linecap="square"/>
+  <text x="2" y="110" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" letter-spacing="2.5" fill="#F7F5F0">STUDIO</text>
+</svg>
