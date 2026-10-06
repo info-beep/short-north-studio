@@ -26,12 +26,12 @@ elif [ "$count" -gt 1 ]; then bad "Multiple SPF records. Merge into ONE:"; echo 
 else ok "$spf"; fi
 
 echo "== DMARC (_dmarc.$DOMAIN)"
-dmarc="$(txt "_dmarc.$DOMAIN" | grep -i '^v=DMARC1' || true)"
+dmarc="$(txt "_dmarc.$DOMAIN" | grep '^v=DMARC1' || true)"
 [ -n "$dmarc" ] && ok "$dmarc" || bad "No DMARC record on _dmarc.$DOMAIN"
 
 if [ "$ROOT" != "$DOMAIN" ]; then
   echo "== DMARC (_dmarc.$ROOT)"
-  rd="$(txt "_dmarc.$ROOT" | grep -i '^v=DMARC1' || true)"
+  rd="$(txt "_dmarc.$ROOT" | grep '^v=DMARC1' || true)"
   [ -n "$rd" ] && ok "$rd" || bad "No DMARC record on _dmarc.$ROOT (recommended)"
 fi
 
