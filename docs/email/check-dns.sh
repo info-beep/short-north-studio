@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Checks that email authentication records are live in public DNS.
 # Usage: ./check-dns.sh [sending-domain] [dkim-selector]
-#   ./check-dns.sh mail.sunstudiotan.com
-#   ./check-dns.sh mail.sunstudiotan.com acumbamail   # selector comes from the Acumbamail panel
+#   ./check-dns.sh sunstudiotan.com
+#   ./check-dns.sh sunstudiotan.com acumbamail   # selector comes from the Acumbamail panel
 set -u
 
-DOMAIN="${1:-mail.sunstudiotan.com}"
+DOMAIN="${1:-sunstudiotan.com}"
 SELECTOR="${2:-}"
 ROOT="$(echo "$DOMAIN" | awk -F. '{print $(NF-1)"."$NF}')"
 

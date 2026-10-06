@@ -2,7 +2,7 @@
 
 **Audience:** 500 random contacts from the Active (verified Valid) bucket
 **Goal:** Bookings. Judge it by clicks and `COMEBACK` code redemptions, not opens.
-**From:** Sun Studio Tan `<hello@mail.sunstudiotan.com>` · **Reply-To:** `hello@sunstudiotan.com`
+**From:** Sun Studio Tan `<hello@sunstudiotan.com>`
 
 > Before sending: create the `COMEBACK` promo code in Vagaro and decide the offer (see "Offer" below). Then swap every `[BOOKING_LINK]` for your Vagaro booking URL with UTMs added.
 

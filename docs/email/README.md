@@ -17,12 +17,12 @@ Four phases, in order. **Don't skip ahead.** Each phase ends with a go/no-go gat
 
 | Option | From address | Pros | Cons |
 |---|---|---|---|
-| **A. Subdomain (recommended)** | `hello@mail.sunstudiotan.com` | If marketing email ever gets a bad reputation, your everyday mail (receipts, Vagaro, 1:1 replies) on `sunstudiotan.com` isn't affected | The address looks slightly less clean |
-| B. Root domain | `hello@sunstudiotan.com` | Cleanest look | Marketing reputation and business mail share one domain |
+| A. Subdomain | `hello@mail.sunstudiotan.com` | If marketing email ever gets a bad reputation, your everyday mail (receipts, Vagaro, 1:1 replies) on `sunstudiotan.com` isn't affected | The address looks slightly less clean |
+| **B. Root domain (recommended)** | `hello@sunstudiotan.com` | Cleanest look, and it's already verified in Acumbamail | Marketing reputation and business mail share one domain |
 
-**Go with A.** Set Reply-To to a real inbox you check (e.g. `hello@sunstudiotan.com`) so replies still reach you.
+**Go with B.** `sunstudiotan.com` is already verified in Acumbamail. At your sending volume, the reputation protection a subdomain gives you isn't worth the setup.
 
-> ⚠️ Before using `mail.` check that it isn't already taken. Some hosts use `mail.yourdomain.com` for webmail. If your DNS panel already has a `mail` record, use `news.sunstudiotan.com` instead and swap it in everywhere below.
+> ⚠️ **Why the subdomain stalls:** Acumbamail verifies a sender by emailing it. `mail.sunstudiotan.com` has no inbox (no MX record), so that verification email has nowhere to land and never arrives. If you ever want a subdomain anyway, it needs its own MX records or forwarding first.
 
 ### Step 1.1 — Find your DNS host
 
@@ -34,7 +34,7 @@ DNS lives wherever your domain's **nameservers** point. That isn't always where 
 ### Step 1.2 — Add the domain in Acumbamail
 
 1. Acumbamail → **Account / Settings → Sender domains** (also listed as *Authenticate domain* / *Dominios*).
-2. Add `mail.sunstudiotan.com` (or `sunstudiotan.com` if you chose option B).
+2. Use `sunstudiotan.com` (already verified). Make sure its SPF/DKIM authentication shows as passing, not just the sender verification.
 3. Acumbamail will show you the exact **SPF** and **DKIM** records. **Copy them exactly from the panel.** Don't copy values from blog posts or old screenshots. They're account-specific and they change.
 
 ### Step 1.3 — Add the records at your DNS host
@@ -43,24 +43,23 @@ Use the values Acumbamail gave you. The general shape:
 
 | Type | Host / Name | Value | Notes |
 |---|---|---|---|
-| TXT | `mail` | `v=spf1 include:<acumbamail-spf-host> ~all` | SPF. Exact include comes from Acumbamail |
-| TXT or CNAME | `<selector>._domainkey.mail` | *(DKIM key/target from Acumbamail)* | DKIM. Paste exactly, no spaces or line breaks added |
-| TXT | `_dmarc.mail` | `v=DMARC1; p=none; rua=mailto:dmarc@sunstudiotan.com; fo=1` | DMARC for the sending subdomain |
-| TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:dmarc@sunstudiotan.com; fo=1` | DMARC for the root domain. Add this only if one doesn't already exist |
+| TXT | `@` | `v=spf1 include:<acumbamail-spf-host> ~all` | SPF. Exact include comes from Acumbamail |
+| TXT or CNAME | `<selector>._domainkey` | *(DKIM key/target from Acumbamail)* | DKIM. Paste exactly, no spaces or line breaks added |
+| TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:dmarc@sunstudiotan.com; fo=1` | DMARC. Add only if one doesn't already exist |
 
 **SPF rules that trip people up:**
-- **Only ONE SPF record per hostname.** If `sunstudiotan.com` already has `v=spf1 ...` (e.g. for Google Workspace), *don't add a second one*. Merge them into one record: `v=spf1 include:_spf.google.com include:<acumbamail-spf-host> ~all`. With the subdomain setup, Acumbamail's SPF goes on `mail`, so the root record stays as it is.
+- **Only ONE SPF record per hostname.** If `sunstudiotan.com` already has `v=spf1 ...` (e.g. for Google Workspace), *don't add a second one*. Merge them into one record: `v=spf1 include:_spf.google.com include:<acumbamail-spf-host> ~all`. 
 - Max 10 DNS lookups per SPF record. If you're stacking 5+ `include:`s, ask before adding more.
 
 **DNS panel quirks:**
-- Most panels (Wix, GoDaddy) automatically add the domain to the end of the Host field. Enter `mail`, not `mail.sunstudiotan.com.sunstudiotan.com`.
+- Most panels (Wix, GoDaddy) automatically add the domain to the end of the Host field. Enter `_dmarc`, not `_dmarc.sunstudiotan.com.sunstudiotan.com`.
 - Create `dmarc@sunstudiotan.com` as a mailbox or alias, or use a free DMARC report reader (e.g. Postmark's free DMARC digests, dmarcian, EasyDMARC). They give you an address to use in `rua=` instead. Raw DMARC reports are unreadable XML attachments.
 
 ### Step 1.4 — Verify
 
 - Wait 15 min to 48 h, then click **Verify** in Acumbamail.
-- Run `./check-dns.sh mail.sunstudiotan.com` from this folder (needs `dig`, built into Mac). It confirms SPF and DMARC are live.
-- Set the sender in Acumbamail: **From name** `Sun Studio Tan` · **From** `hello@mail.sunstudiotan.com` · **Reply-To** `hello@sunstudiotan.com`.
+- Run `./check-dns.sh sunstudiotan.com` from this folder (needs `dig`, built into Mac). It confirms SPF and DMARC are live.
+- Set the sender in Acumbamail: **From name** `Sun Studio Tan` · **From** `hello@sunstudiotan.com` · **Reply-To** `hello@sunstudiotan.com`.
 - **Never** send from Acumbamail's shared default address or from a `@gmail.com` address.
 
 ### DMARC: the road to enforcement (later, not now)
