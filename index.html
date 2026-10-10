@@ -1,232 +1,718 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Short North Studio is a flexible creative event space in Columbus, Ohio for celebrations, workshops, rehearsals, meetings, content shoots, and kids parties.">
-<meta name="theme-color" content="#171715">
-<title>Short North Studio | Columbus Event Space &amp; Creative Studio</title>
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Short North Studio | Private Event Space in Columbus, OH</title>
+<meta name="description" content="Rent a bright, private event studio at 612 N. High St. in Columbus's Short North. Showers, birthdays, meetings, workshops and content shoots. Three-hour minimum.">
+<link rel="canonical" href="https://short-north-studio.com/">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Short North Studio">
+<meta property="og:title" content="Short North Studio | Book one room. Reset for anything.">
+<meta property="og:description" content="A private, bright event studio at 612 N. High St. in Columbus's Short North. Showers, parties, meetings and shoots. Three-hour minimum.">
+<meta property="og:url" content="https://short-north-studio.com/">
+<meta property="og:image" content="https://short-north-studio.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Short North Studio set for a bridal shower, with the tagline book one room, reset for anything">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Short North Studio | Book one room. Reset for anything.">
+<meta name="twitter:description" content="A private event studio in Columbus's Short North. Three-hour minimum.">
+<meta name="twitter:image" content="https://short-north-studio.com/og-image.jpg">
+<link rel="preload" as="image" href="frames/d/000.webp" media="(min-width: 768px)">
+<link rel="preload" as="image" href="frames/m/000.webp" media="(max-width: 767px)">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "EventVenue", "name": "Short North Studio", "url": "https://short-north-studio.com/", "image": "https://short-north-studio.com/og-image.jpg", "description": "Rent a bright, private event studio at 612 N. High St. in Columbus's Short North. Showers, birthdays, meetings, workshops and content shoots. Three-hour minimum.", "telephone": "+1-614-414-2205", "address": {"@type": "PostalAddress", "streetAddress": "612 N. High St.", "addressLocality": "Columbus", "addressRegion": "OH", "postalCode": "43215", "addressCountry": "US"}, "maximumAttendeeCapacity": 30, "sameAs": ["https://www.peerspace.com/pages/listings/697455a9e9f85bc77b30f5e9"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0b; --text:#ffffff; --muted:rgba(255,255,255,.6); --faint:rgba(255,255,255,.38);
+  --red:#D53C3A; --red-deep:#b12c2a; --cream:#FFFAF2;
+  --card:rgba(255,255,255,.05); --line:rgba(255,255,255,.1);
+  --display:"Bricolage Grotesque", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ink:#0a0a0b; --text:#ffffff; } }
+:root[data-theme="dark"]{ --ink:#0a0a0b; --text:#ffffff; }
+html{ scroll-padding-top:env(safe-area-inset-top,0px); background:var(--ink); }
+*,*::before,*::after{ box-sizing:inherit; margin:0; padding:0; }
+body{ background:var(--ink); color:var(--text); font-family:var(--serif); font-size:1.125rem; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+img{ max-width:100%; display:block; }
+a{ color:inherit; }
+:focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:4px; }
+
+/* ---------- chrome ---------- */
+.progress{ position:fixed; top:0; left:0; right:0; height:3px; z-index:60; padding-top:env(safe-area-inset-top,0px); pointer-events:none; }
+.progress i{ display:block; height:3px; width:100%; background:var(--red); transform-origin:0 50%; transform:scaleX(0); }
+.topnav{ position:fixed; top:0; left:0; right:0; z-index:50; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:calc(env(safe-area-inset-top,0px) + 14px) clamp(16px,4vw,48px) 14px; transition:background .35s, backdrop-filter .35s; }
+.topnav.solid{ background:rgba(10,10,11,.72); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--line); }
+.topnav .brand img{ height:40px; width:auto; }
+.topnav ul{ display:flex; gap:clamp(12px,2.4vw,32px); list-style:none; font-family:var(--display); font-weight:500; font-size:.95rem; }
+.topnav ul a{ text-decoration:none; color:var(--muted); transition:color .2s; }
+.topnav ul a:hover{ color:var(--text); }
+.pill{ display:inline-flex; align-items:center; justify-content:center; gap:.5em; border-radius:999px; padding:.8em 1.5em; font-family:var(--display); font-weight:800; font-size:1rem; text-decoration:none; letter-spacing:-.01em; transition:background .2s, color .2s, transform .2s; white-space:nowrap; }
+.pill.red{ background:var(--red); color:#fff; }
+.pill.red:hover{ background:var(--red-deep); }
+.pill.ghost{ border:1px solid rgba(255,255,255,.35); color:var(--text); }
+.pill.ghost:hover{ background:rgba(255,255,255,.08); }
+.pill.small{ padding:.6em 1.15em; font-size:.9rem; }
+
+.dots{ position:fixed; right:clamp(10px,2vw,26px); top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:14px; }
+.dots a{ width:10px; height:10px; border-radius:50%; border:1px solid rgba(255,255,255,.55); display:block; transition:background .25s, transform .25s, border-color .25s; }
+.dots a.on{ background:var(--red); border-color:var(--red); transform:scale(1.35); }
+.dots a span{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+
+.grain{ position:fixed; inset:-50%; z-index:70; pointer-events:none; opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 1.2s steps(6) infinite; }
+@keyframes grain{ 0%{transform:translate(0,0)} 20%{transform:translate(-3%,2%)} 40%{transform:translate(2%,-3%)} 60%{transform:translate(-2%,-1%)} 80%{transform:translate(3%,3%)} 100%{transform:translate(0,0)} }
+#motes{ position:fixed; inset:0; z-index:5; pointer-events:none; }
+
+.loader{ position:fixed; inset:0; z-index:90; background:var(--ink); display:grid; place-items:center; transition:opacity .6s, visibility .6s; }
+.loader.done{ opacity:0; visibility:hidden; }
+.loader-inner{ width:min(280px,70vw); text-align:center; }
+.loader img{ width:150px; margin:0 auto 22px; }
+.loader .bar{ height:2px; background:var(--line); overflow:hidden; }
+.loader .bar i{ display:block; height:100%; width:0; background:var(--red); transition:width .15s; }
+.loader p{ margin-top:10px; font-size:.9rem; color:var(--faint); font-style:italic; }
+
+/* ---------- shared type ---------- */
+.h-display{ font-family:var(--display); font-weight:800; text-transform:lowercase; letter-spacing:-.045em; line-height:.9; }
+.split .ch{ display:inline-block; opacity:0; transform:translateY(.45em); transition:opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+.split .w{ display:inline-block; white-space:nowrap; }
+.split.in .ch{ opacity:1; transform:none; }
+.lede{ color:var(--muted); max-width:34em; }
+.wrap{ width:min(1200px,100% - 2*clamp(20px,5vw,64px)); margin-inline:auto; }
+section{ position:relative; z-index:6; }
+.panel{ min-height:100vh; min-height:100svh; display:flex; align-items:center; padding-block:clamp(90px,12vh,140px); }
+
+/* ---------- hero ---------- */
+#hero{ height:520vh; }
+.stage{ position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
+#reel{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.stage::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,10,11,.55) 0%,rgba(10,10,11,.05) 35%,rgba(10,10,11,.15) 60%,rgba(10,10,11,.85) 100%); pointer-events:none; }
+/* viewfinder corners, borrowed from the logo's bracket frame */
+.finder{ position:absolute; inset:clamp(76px,11vh,110px) clamp(18px,4vw,56px) clamp(22px,5vh,52px); z-index:2; pointer-events:none; }
+.finder b{ position:absolute; width:clamp(28px,5vw,64px); height:clamp(28px,5vw,64px); border:0 solid var(--cream); opacity:.85; }
+.finder b:nth-child(1){ top:0; left:0; border-top-width:5px; border-left-width:5px; }
+.finder b:nth-child(2){ top:0; right:0; border-top-width:5px; border-right-width:5px; }
+.finder b:nth-child(3){ bottom:0; left:0; border-bottom-width:5px; border-left-width:5px; }
+.finder b:nth-child(4){ bottom:0; right:0; border-bottom-width:5px; border-right-width:5px; }
+.hero-copy{ position:absolute; z-index:3; left:clamp(34px,7vw,110px); right:clamp(34px,7vw,110px); bottom:clamp(64px,13vh,140px); }
+.hero-copy h1{ font-size:clamp(3.2rem,11.5vw,10.5rem); color:var(--cream); }
+.hero-copy .lede{ margin-top:clamp(14px,2.5vh,26px); font-size:clamp(1.05rem,1.6vw,1.35rem); color:rgba(255,250,242,.82); }
+.hero-copy .actions{ margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; }
+.caption{ position:absolute; z-index:3; left:clamp(34px,7vw,110px); bottom:clamp(64px,13vh,140px); right:clamp(34px,7vw,110px); pointer-events:none; }
+.caption p{ font-family:var(--display); font-weight:800; text-transform:lowercase; letter-spacing:-.04em; line-height:.95; font-size:clamp(2.4rem,7.5vw,6.5rem); color:var(--cream); opacity:0; transform:translateY(24px); transition:opacity .45s, transform .55s cubic-bezier(.2,.8,.2,1); position:absolute; bottom:0; left:0; right:0; }
+.caption p.on{ opacity:1; transform:none; }
+.caption small{ display:block; font-family:var(--serif); font-style:italic; font-weight:400; letter-spacing:0; text-transform:none; font-size:clamp(1rem,1.5vw,1.25rem); color:rgba(255,250,242,.75); margin-top:12px; }
+.counter{ position:absolute; z-index:3; right:clamp(34px,7vw,110px); bottom:clamp(64px,13vh,140px); font-family:var(--serif); font-size:1rem; color:rgba(255,250,242,.7); font-variant-numeric:tabular-nums; opacity:0; transition:opacity .4s; }
+.counter.on{ opacity:1; }
+.scrollhint{ position:absolute; z-index:3; left:50%; bottom:calc(clamp(22px,5vh,52px) + 14px); transform:translateX(-50%); font-size:.9rem; font-style:italic; color:rgba(255,250,242,.7); transition:opacity .3s; }
+
+/* marquee band (from the original site's scrolling line) */
+.band{ position:relative; z-index:6; border-block:1px solid var(--line); overflow:hidden; padding:18px 0; background:var(--ink); }
+.band .track{ display:flex; width:max-content; animation:band 38s linear infinite; }
+.band span{ font-family:var(--serif); font-style:italic; font-size:clamp(1.2rem,2.4vw,1.9rem); color:var(--muted); padding-right:3rem; white-space:nowrap; }
+.band span::after{ content:""; display:inline-block; width:.5em; height:.5em; margin-left:3rem; background:var(--red); border-radius:50%; vertical-align:middle; }
+@keyframes band{ to{ transform:translateX(-50%); } }
+
+/* ---------- uses ---------- */
+#uses{ background:
+  radial-gradient(90% 60% at 85% 10%, rgba(213,60,58,.16), transparent 60%),
+  var(--ink); }
+.uses-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:clamp(36px,6vw,90px); align-items:start; width:100%; }
+.uses-list{ list-style:none; font-family:var(--display); font-weight:800; text-transform:lowercase; letter-spacing:-.04em; line-height:1.02; font-size:clamp(2.1rem,5vw,4.2rem); }
+.uses-list li{ color:rgba(255,255,255,.22); transition:color .3s; cursor:default; }
+.uses-list li:hover, .uses-list li.lit{ color:var(--text); }
+.uses-side h2{ font-size:clamp(2.2rem,4.2vw,3.6rem); }
+.uses-side .lede{ margin-top:18px; }
+.setups{ margin-top:34px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.glass{ background:var(--card); border:1px solid var(--line); border-radius:16px; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+.setup{ padding:20px 20px 22px; }
+.setup svg{ width:30px; height:30px; stroke:var(--cream); fill:none; stroke-width:1.6; margin-bottom:12px; }
+.setup h3{ font-family:var(--display); font-weight:800; font-size:1.15rem; letter-spacing:-.02em; line-height:1.2; }
+.setup p{ color:var(--muted); font-size:1rem; line-height:1.5; margin-top:6px; }
+.setup .price{ color:var(--red); font-family:var(--display); font-weight:800; }
+
+/* ---------- details ---------- */
+#details .wrap{ display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(36px,6vw,90px); align-items:center; }
+#details h2{ font-size:clamp(3rem,7vw,6.2rem); }
+#details .lede{ margin-top:22px; font-size:1.2rem; }
+.stats{ display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+.stat{ padding:clamp(24px,3.4vw,44px); border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+.stat:nth-child(2n){ border-right:0; }
+.stat:nth-child(n+3){ border-bottom:0; }
+.stat .num{ white-space:nowrap; font-family:var(--serif); font-weight:400; font-size:clamp(2.4rem,4.4vw,4rem); line-height:1; letter-spacing:-.02em; font-variant-numeric:lining-nums tabular-nums; }
+.stat .lab{ margin-top:14px; color:var(--muted); font-size:1rem; }
+
+/* ---------- how ---------- */
+#how h2{ font-size:clamp(2.8rem,6.5vw,5.6rem); max-width:10ch; }
+.steps{ list-style:none; margin-top:clamp(40px,7vh,70px); display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,3vw,40px); counter-reset:s; }
+.steps li{ border-top:5px solid var(--cream); padding-top:22px; counter-increment:s; }
+.steps li::before{ content:counter(s); display:block; font-family:var(--display); font-weight:800; font-size:clamp(3rem,6vw,5rem); line-height:1; color:var(--red); letter-spacing:-.05em; margin-bottom:14px; }
+.steps h3{ font-family:var(--display); font-weight:800; font-size:1.45rem; letter-spacing:-.02em; line-height:1.15; }
+.steps p{ color:var(--muted); margin-top:8px; }
+
+/* ---------- gallery ---------- */
+#gallery{ padding-block:clamp(90px,14vh,160px); min-height:100vh; }
+#gallery .head{ display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:24px; margin-bottom:clamp(40px,7vh,72px); }
+#gallery h2{ font-size:clamp(2.8rem,6.5vw,5.6rem); }
+.gal{ display:grid; grid-template-columns:repeat(12,1fr); gap:clamp(12px,1.6vw,22px); align-items:start; }
+.tile{ position:relative; border-radius:16px; overflow:hidden; will-change:transform; background:#151516; }
+.tile img{ width:100%; height:100%; object-fit:cover; transform:scale(1.04); }
+.tile figcaption{ position:absolute; left:0; right:0; bottom:0; padding:48px 18px 16px; background:linear-gradient(180deg,transparent,rgba(10,10,11,.85)); }
+.tile figcaption strong{ display:block; font-family:var(--display); font-weight:800; font-size:clamp(1.2rem,1.8vw,1.55rem); letter-spacing:-.02em; text-transform:lowercase; line-height:1.1; }
+.tile figcaption span{ display:block; color:rgba(255,255,255,.75); font-size:.98rem; line-height:1.4; margin-top:4px; }
+.t1{ grid-column:1 / span 7; aspect-ratio:16/10; }
+.t2{ grid-column:8 / span 5; aspect-ratio:4/5; margin-top:12vh; }
+.t3{ grid-column:1 / span 5; aspect-ratio:1/1; margin-top:-8vh; }
+.t4{ grid-column:6 / span 7; aspect-ratio:16/10; }
+.t5{ grid-column:2 / span 6; aspect-ratio:16/9; }
+.t6{ grid-column:8 / span 4; aspect-ratio:4/5; margin-top:6vh; }
+.t7{ grid-column:3 / span 8; aspect-ratio:16/9; }
+.gal-actions{ margin-top:clamp(40px,7vh,70px); display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+
+/* ---------- book ---------- */
+#book{ text-align:center; background:radial-gradient(70% 55% at 50% 60%, rgba(213,60,58,.28), transparent 70%), var(--ink); }
+#book .wrap{ display:flex; flex-direction:column; align-items:center; }
+#book h2{ font-size:clamp(3.6rem,13vw,12rem); color:var(--cream); }
+#book .lede{ margin-top:22px; font-size:1.25rem; text-align:center; }
+#book .actions{ margin-top:32px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+#book address{ font-style:normal; margin-top:36px; color:var(--muted); }
+
+/* ---------- footer ---------- */
+footer{ position:relative; z-index:6; background:var(--cream); color:#1a1a1b; padding:clamp(44px,7vh,72px) 0 calc(28px + env(safe-area-inset-bottom,0px)); }
+footer .wrap{ display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:36px; align-items:start; }
+footer .logos{ max-width:340px; }
+footer h4{ font-family:var(--display); font-weight:800; font-size:1rem; margin-bottom:10px; letter-spacing:-.01em; }
+footer p, footer li{ font-size:1rem; line-height:1.7; color:#3a3a3c; }
+footer ul{ list-style:none; }
+footer a{ text-decoration:none; }
+footer a:hover{ color:var(--red); }
+footer .sig{ display:flex; align-items:center; gap:12px; margin-top:14px; font-style:italic; color:#3a3a3c; }
+footer .sig img{ height:40px; width:auto; }
+footer .legal{ grid-column:1/-1; border-top:1px solid rgba(0,0,0,.12); padding-top:18px; font-size:.9rem; color:#6b6b6e; }
+
+/* ---------- 360 tour ---------- */
+#tour{ background:radial-gradient(80% 60% at 15% 90%, rgba(213,60,58,.14), transparent 60%), var(--ink); }
+#tour .wrap{ display:flex; flex-direction:column; }
+#tour h2{ font-size:clamp(2.8rem,6.5vw,5.6rem); max-width:12ch; }
+#tour .lede{ margin-top:18px; }
+.tour-frame{ position:relative; margin-top:clamp(28px,5vh,52px); width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:#151516; }
+.tour-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.tour-note{ margin-top:14px; font-size:.95rem; font-style:italic; color:var(--faint); }
+
+/* ---------- pricing ---------- */
+#pricing{ padding-block:clamp(90px,14vh,160px); background:radial-gradient(70% 50% at 90% 10%, rgba(213,60,58,.14), transparent 60%), var(--ink); }
+#pricing h2{ font-size:clamp(2.8rem,6.5vw,5.6rem); }
+#pricing .lede{ margin-top:18px; }
+.pricing-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:clamp(24px,4vw,56px); margin-top:clamp(36px,6vh,64px); align-items:start; }
+.col-h{ font-family:var(--display); font-weight:800; text-transform:lowercase; letter-spacing:-.03em; font-size:clamp(1.4rem,2.2vw,1.8rem); margin-bottom:16px; color:var(--cream); }
+.pkg-list{ display:grid; gap:16px; }
+.pkg{ padding:24px 26px 26px; position:relative; }
+.pkg.pop{ border-color:var(--red); }
+.pkg .top{ display:flex; justify-content:space-between; align-items:baseline; gap:6px 16px; flex-wrap:wrap; }
+.pkg h3{ font-family:var(--display); font-weight:800; font-size:clamp(1.4rem,2.4vw,1.9rem); letter-spacing:-.03em; text-transform:lowercase; line-height:1.1; }
+.pkg .cost{ font-family:var(--display); font-weight:800; color:var(--red); font-size:1.2rem; white-space:nowrap; }
+.pkg .badge{ display:inline-block; margin-top:8px; font-family:var(--display); font-weight:800; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; background:var(--red); color:#fff; border-radius:999px; padding:.3em .85em; }
+.pkg p{ color:var(--muted); font-size:1.02rem; line-height:1.5; margin-top:8px; }
+.pkg ul{ list-style:none; margin-top:8px; color:var(--muted); font-size:1.02rem; line-height:1.6; }
+.pkg li::before{ content:""; display:inline-block; width:.42em; height:.42em; background:var(--red); border-radius:50%; margin-right:.7em; vertical-align:middle; position:relative; top:-.05em; }
+.addons{ padding:6px 26px; }
+.addon{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; padding:16px 0; border-bottom:1px solid var(--line); }
+.addon:last-child{ border-bottom:0; }
+.addon strong{ font-family:var(--display); font-weight:800; letter-spacing:-.01em; font-size:1.08rem; line-height:1.3; }
+.addon small{ display:block; color:var(--muted); font-size:.95rem; line-height:1.4; margin-top:2px; }
+.addon .amt{ font-family:var(--display); font-weight:800; white-space:nowrap; color:var(--cream); }
+.addon.hourly .amt{ color:var(--red); font-size:1.15rem; }
+.includes{ margin-top:clamp(32px,6vh,56px); text-align:center; }
+.includes h3{ font-family:var(--display); font-weight:800; text-transform:lowercase; letter-spacing:-.03em; font-size:clamp(1.5rem,2.6vw,2.1rem); color:var(--cream); }
+.includes p{ color:var(--muted); max-width:40em; margin:12px auto 0; }
+.kids-line{ margin:clamp(24px,4vh,36px) auto 0; padding-top:22px; border-top:1px solid var(--line); text-align:center; color:var(--muted); max-width:46em; font-size:1.02rem; }
+.kids-line a{ color:var(--text); }
+.price-actions{ margin-top:30px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+@media (max-width: 900px){
+  .pricing-grid{ grid-template-columns:1fr; }
+}
+@media (max-width: 767px){
+  .tour-frame{ aspect-ratio:4/3; }
+  .addons{ padding:4px 20px; }
+  .pkg{ padding:20px; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px){
+  .uses-grid, #details .wrap{ grid-template-columns:1fr; }
+  .steps{ grid-template-columns:1fr; }
+  footer .wrap{ grid-template-columns:1fr; }
+}
+@media (max-width: 767px){
+  .topnav ul{ display:none; }
+  .topnav .brand img{ height:34px; }
+  .dots{ display:none; }
+  .setups{ grid-template-columns:1fr; }
+  .gal{ grid-template-columns:1fr; }
+  .gal .tile{ grid-column:1 / -1 !important; margin-top:0 !important; aspect-ratio:4/3; }
+  .counter{ display:none; }
+}
+@media (prefers-reduced-motion: reduce){
+  .grain{ animation:none; }
+  .band .track{ animation:none; }
+  .split .ch{ opacity:1; transform:none; transition:none; }
+  .tile{ transform:none !important; }
+  #motes{ display:none; }
+}
+</style>
 </head>
 <body>
 
-<div class="progress-bar" id="progressBar"></div>
+<div class="loader" id="loader" role="status" aria-live="polite">
+  <div class="loader-inner">
+    <img src="img/logo.webp" alt="Short North Studio">
+    <div class="bar"><i id="loadbar"></i></div>
+    <p id="loadtxt">Setting up the room…</p>
+  </div>
+</div>
 
-<header class="site-header" id="siteHeader">
-  <a href="#top" aria-label="Short North Studio home">
-    <img class="logo-mark logo-light" src="assets/logo-light.svg" alt="Short North Studio" width="118" height="52">
-    <img class="logo-mark logo-dark" src="assets/logo-dark.svg" alt="Short North Studio" width="118" height="52">
-  </a>
-  <ul class="nav-links">
-    <li><a href="#glance">The Space</a></li>
-    <li><a href="#fits">What Fits</a></li>
-    <li><a href="#slime-party">Kids Parties</a></li>
-    <li><a href="#location">Contact</a></li>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+<div class="grain" aria-hidden="true"></div>
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<header class="topnav" id="topnav">
+  <a class="brand" href="#hero" aria-label="Short North Studio, back to top"><img src="img/logo.webp" alt="Short North Studio"></a>
+  <ul>
+    <li><a href="https://short-north-studio.wixstudio.com/snorthstudio">Our place</a></li>
+    <li><a href="https://short-north-studio.wixstudio.com/snorthstudio/trainers">Rent our studio</a></li>
+    <li><a href="https://short-north-studio.wixstudio.com/snorthstudio/pricing-plans/list">Plans</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="baby-showers/">Baby showers</a></li>
+    <li><a href="kids-parties/">Kids parties</a></li>
+    <li><a href="estimate/">Get an estimate</a></li>
   </ul>
-  <a class="nav-cta" href="#location">Check Availability <span>↗</span></a>
+  <a class="pill red small" href="https://www.peerspace.com/pages/listings/697455a9e9f85bc77b30f5e9" target="_blank" rel="noopener">Book now</a>
 </header>
 
-<main id="top">
+<nav class="dots" id="dots" aria-label="Page sections">
+  <a href="#hero" data-s="hero"><span>Top</span></a>
+  <a href="#uses" data-s="uses"><span>What it's for</span></a>
+  <a href="#details" data-s="details"><span>The details</span></a>
+  <a href="#tour" data-s="tour"><span>360 tour</span></a>
+  <a href="#how" data-s="how"><span>How booking works</span></a>
+  <a href="#gallery" data-s="gallery"><span>Gallery</span></a>
+  <a href="#pricing" data-s="pricing"><span>Pricing</span></a>
+  <a href="#book" data-s="book"><span>Book</span></a>
+</nav>
 
-  <div class="hero-wrap">
-    <div class="hero-pin" id="heroPin">
+<main>
+<section id="hero" data-section aria-label="Short North Studio">
+  <div class="stage">
+    <canvas id="reel" aria-hidden="true"></canvas>
+    <div class="finder" aria-hidden="true"><b></b><b></b><b></b><b></b></div>
 
-      <div class="video-layer" id="videoLayer">
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="assets/hero.mp4" type="video/mp4">
-        </video>
+    <div class="hero-copy" id="heroCopy">
+      <h1 class="h-display split" data-split>one room.<br>reset for anything.</h1>
+      <p class="lede">A private, bright, boutique-style studio in the heart of Columbus's Short North Arts District. Showers, parties, meetings, rehearsals, shoots.</p>
+      <div class="actions">
+        <a class="pill red" href="https://www.peerspace.com/pages/listings/697455a9e9f85bc77b30f5e9" target="_blank" rel="noopener">Book on Peerspace</a>
+        <a class="pill ghost" href="#details">See the details</a>
       </div>
+    </div>
 
-      <div class="overlay-gradient"></div>
-      <div class="grain"></div>
-      <div class="particles" id="particles"></div>
+    <div class="caption" id="captions" aria-live="polite">
+      <p>lit for a shoot.<small>Ring light, brick, and warm Edison glow for photos, video, and social content.</small></p>
+      <p>set for a shower.<small>Long tables, florals, and room for 30.</small></p>
+      <p>turned up for a party.<small>Birthdays, sorority nights, holiday parties.</small></p>
+      <p>open for a workshop.<small>Tables, a screen, and 1,103 square feet to spread out.</small></p>
+      <p>squared away for a meeting.<small>Offsites, planning days, and corporate events.</small></p>
+    </div>
+    <div class="counter" id="counter">01 / 05</div>
+    <div class="scrollhint" id="scrollhint">Scroll to reset the room</div>
+  </div>
+</section>
 
-      <div class="hero-content" id="heroContent">
-        <div class="eyebrow on-dark"><span>Columbus, Ohio · Short North Arts District</span></div>
-        <h1 class="headline" id="headline">Room to<br><span class="accent-line">make it</span> memorable.</h1>
-        <p class="subcopy">A bright, flexible event and creative studio for parties, rehearsals, workshops, shoots, and intimate gatherings — right in the heart of the Short North.</p>
-        <div class="cta-row">
-          <a class="button button-cream" href="#location">Book the Studio <span class="arrow">↗</span></a>
-          <a href="#glance" class="btn-ghost">Explore the space <span class="down">↓</span></a>
+<div class="band" aria-label="Located in the heart of Columbus's Short North Arts District">
+  <div class="track" aria-hidden="true">
+    <span>Located in the heart of Columbus's Short North Arts District</span>
+    <span>612 N. High St., Columbus</span>
+    <span>Located in the heart of Columbus's Short North Arts District</span>
+    <span>612 N. High St., Columbus</span>
+    <span>Located in the heart of Columbus's Short North Arts District</span>
+    <span>612 N. High St., Columbus</span>
+    <span>Located in the heart of Columbus's Short North Arts District</span>
+    <span>612 N. High St., Columbus</span>
+  </div>
+</div>
+
+<section id="uses" class="panel" data-section>
+  <div class="wrap uses-grid">
+    <ul class="uses-list" id="usesList">
+      <li>meetings</li>
+      <li>baby showers</li>
+      <li>wedding showers</li>
+      <li>birthdays</li>
+      <li>holiday parties</li>
+      <li>rehearsals</li>
+      <li>corporate events</li>
+      <li>content shoots</li>
+    </ul>
+    <div class="uses-side">
+      <h2 class="h-display split" data-split>make great memories.</h2>
+      <p class="lede">Arrive, set up quickly, and configure the room around your event or creative work.</p>
+      <div class="setups">
+        <div class="setup glass">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="12" rx="1"/><path d="M8 24h4M14 24h4M20 24h4M8 28h4M14 28h4M20 28h4"/></svg>
+          <h3>Classroom-style</h3>
+          <p>Rows facing front for a workshop or class.</p>
+        </div>
+        <div class="setup glass">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 4h6M4 4v6M28 4h-6M28 4v6M4 28h6M4 28v-6M28 28h-6M28 28v-6"/><circle cx="16" cy="16" r="3"/></svg>
+          <h3>Clear the center</h3>
+          <p>Open floor for movement and rehearsals.</p>
+        </div>
+        <div class="setup glass">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 22h26v5H3zM7 22l3-8h12l3 8"/><path d="M16 5v6"/></svg>
+          <h3>Add the stage <span class="price">+$50</span></h3>
+          <p>A small stage for toasts, performances, and presentations.</p>
+        </div>
+        <div class="setup glass">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="13" r="7"/><circle cx="16" cy="13" r="3"/><path d="M16 20v9M11 29h10"/></svg>
+          <h3>Style a backdrop</h3>
+          <p>A polished set for photos, video, and social content.</p>
         </div>
       </div>
-
-      <div class="stat-row">
-        <div class="stat-card"><div class="stat-num">30</div><div class="stat-label">Guests Max</div></div>
-        <div class="stat-card"><div class="stat-num">1,103</div><div class="stat-label">Square Feet</div></div>
-        <div class="stat-card"><div class="stat-num">3 HR</div><div class="stat-label">Minimum</div></div>
-      </div>
-
     </div>
   </div>
+</section>
 
-  <section class="section tight">
-    <div class="section-inner split">
+<section id="details" class="panel" data-section>
+  <div class="wrap">
+    <div>
+      <h2 class="h-display split" data-split>the details you need.</h2>
+      <p class="lede">A private, bright, boutique-style studio in the Short North Arts District. Book three hours or book the night.</p>
+      <p style="margin-top:26px"><a class="pill ghost" href="#tour">Take the 360 tour &darr;</a></p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num" data-count="1103" data-sep="1">0</div><div class="lab">Square feet</div></div>
+      <div class="stat"><div class="num" data-count="30">0</div><div class="lab">Guests maximum</div></div>
+      <div class="stat"><div class="num"><span data-count="3">0</span> hours</div><div class="lab">Minimum booking</div></div>
+      <div class="stat"><div class="num"><span data-count="24">0</span>/7</div><div class="lab">Bookable hours</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="tour" class="panel" data-section>
+  <div class="wrap">
+    <h2 class="h-display split" data-split>walk it before you book it.</h2>
+    <p class="lede">Step inside the studio in 360&deg;. Drag to look around and tap the floor to move through the room.</p>
+    <div class="tour-frame glass">
+      <iframe title="Short North Studio 360 tour" width="853" height="480" src="https://my.matterport.com/show/?m=DhTkobjgrge" loading="lazy" frameborder="0" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"></iframe>
+    </div>
+    <p class="tour-note">612 N. High St., Short North Arts District</p>
+  </div>
+</section>
+
+<section id="how" class="panel" data-section>
+  <div class="wrap">
+    <h2 class="h-display split" data-split>booking takes three steps.</h2>
+    <ol class="steps">
+      <li><h3>Pick your hours</h3><p>Choose a time on Peerspace. Three-hour minimum, bookable around the clock.</p></li>
+      <li><h3>Arrive and set up</h3><p>The room is private and bright, so you can get to work fast.</p></li>
+      <li><h3>Set it your way</h3><p>Rearrange the room, add the stage for $50, and host your people.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="gallery" data-section>
+  <div class="wrap">
+    <div class="head">
+      <h2 class="h-display split" data-split>showers, parties, and everything between.</h2>
+    </div>
+    <div class="gal" id="gal">
+      <figure class="tile t1" data-speed="-0.06"><img decoding="async" src="img/gallery-1.webp" alt="Studio set with long tables and pink chair sashes for a bridal shower" loading="lazy"><figcaption><strong>wedding showers</strong><span>Long tables, florals, and room for the whole bridal party.</span></figcaption></figure>
+      <figure class="tile t2" data-speed="0.08"><img decoding="async" src="img/gallery-2.webp" alt="Guests at a baby shower in the studio" loading="lazy"><figcaption><strong><a href="baby-showers/" style="text-decoration:none">baby showers →</a></strong><span>Games, gifts, and good light for the photos.</span></figcaption></figure>
+      <figure class="tile t3" data-speed="0.1"><img decoding="async" src="img/gallery-3.webp" alt="A sorority gathering in the studio lounge" loading="lazy"><figcaption><strong>sorority gatherings</strong><span>Bid days, bigs and littles, chapter nights.</span></figcaption></figure>
+      <figure class="tile t4" data-speed="-0.04"><img decoding="async" src="img/gallery-4.webp" alt="Kids party promo: big fun, zero parent panic, from $399" loading="lazy"><figcaption><strong><a href="kids-parties/" style="text-decoration:none">kids parties from $399 →</a></strong><span>Squishy, neon slime, or princess. Two hours, and we do the cleanup.</span></figcaption></figure>
+      <figure class="tile t5" data-speed="0.05"><img decoding="async" src="img/gallery-5.webp" alt="Content studio corner with a ring light, brick wall, and Edison bulbs" loading="lazy"><figcaption><strong>content shoots</strong><span>Ring light, brick, and warm Edison glow.</span></figcaption></figure>
+      <figure class="tile t6" data-speed="-0.08"><img decoding="async" src="img/gallery-6.webp" alt="Lounge corner with a velvet chair against a textured wall" loading="lazy"><figcaption><strong>the lounge corner</strong><span>A quiet spot for portraits and prep.</span></figcaption></figure>
+      <figure class="tile t7" data-speed="0.04"><img decoding="async" src="img/gallery-7.webp" alt="Conference table with black chairs in natural light" loading="lazy"><figcaption><strong>meetings</strong><span>Offsites, workshops, and planning days.</span></figcaption></figure>
+    </div>
+    <div class="gal-actions">
+      <a class="pill ghost" href="baby-showers/">Baby shower packages</a>
+      <a class="pill ghost" href="event-support/">Party and event packages</a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" data-section>
+  <div class="wrap">
+    <h2 class="h-display split" data-split>event packages and pricing.</h2>
+    <p class="lede">Private event space in the heart of the Short North Arts District. Up to 30 guests.</p>
+
+    <div class="pricing-grid">
       <div>
-        <p class="eyebrow">One room. Your vision.</p>
-        <h2>Not a ballroom. Not a blank box. Your kind of space.</h2>
+        <h3 class="col-h">the packages</h3>
+        <div class="pkg-list">
+          <article class="pkg glass">
+            <div class="top"><h3>the social</h3><span class="cost">$375 / 3 hrs</span></div>
+            <p>3 hours of private studio use.</p>
+            <ul><li>Tables, chairs, setup and cleanup</li></ul>
+          </article>
+          <article class="pkg glass pop">
+            <div class="top"><h3>the celebration</h3><span class="cost">$485 / 4 hrs</span></div>
+            <span class="badge">Most popular</span>
+            <ul>
+              <li>Adds 30 minutes of early access</li>
+              <li>Neutral photo backdrop</li>
+              <li>Coffee and beverage station</li>
+            </ul>
+          </article>
+          <article class="pkg glass">
+            <div class="top"><h3>the signature</h3><span class="cost">$695 / 6 hrs</span></div>
+            <p>The full studio for the day or evening.</p>
+            <ul>
+              <li>Premium furniture and an on-site host</li>
+              <li>Extended cleanup</li>
+            </ul>
+          </article>
+        </div>
       </div>
+
       <div>
-        <p>Short North Studio is for people who want something more personal than a traditional venue — and more polished than "we cleared out the living room."</p>
-        <div class="intro-callout">Bring the plan. We'll help the room flex around it.</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="glance">
-    <div class="section-inner">
-      <p class="eyebrow">Space at a glance</p>
-      <h2>The details you need.</h2>
-      <p style="color:var(--ink-soft);max-width:60ch;margin-top:18px;line-height:1.7;">A private, bright, boutique-style studio in the Short North Arts District. Arrive, set up quickly, and configure the room around your event or creative work.</p>
-
-      <div class="glance-grid">
-        <div class="glance-cell"><div class="num">1,103</div><div class="label">Square Feet</div></div>
-        <div class="glance-cell"><div class="num">30</div><div class="label">Guests Maximum</div></div>
-        <div class="glance-cell"><div class="num">3 hrs</div><div class="label">Minimum Booking</div></div>
-        <div class="glance-cell"><div class="num">24/7</div><div class="label">Bookable Hours</div></div>
-      </div>
-
-      <div class="glance-sub">
-        <div>
-          <h3>Set it your way</h3>
-          <p>Arrange the room classroom-style for a workshop, clear the center for movement and rehearsals, add the small stage for $50, or style a polished backdrop for photos, video, and social content.</p>
-          <a class="button button-outline" href="#location">See availability and pricing <span class="arrow">↗</span></a>
+        <h3 class="col-h">build your own &amp; add-ons</h3>
+        <div class="addons glass">
+          <div class="addon hourly"><div><strong>Hourly rental</strong><small>3-hour minimum</small></div><span class="amt">$125/hour</span></div>
+          <div class="addon"><div><strong>Additional hour</strong></div><span class="amt">$100</span></div>
+          <div class="addon"><div><strong>Early access / extra setup hour</strong></div><span class="amt">$75</span></div>
+          <div class="addon"><div><strong>360 photo booth or styled backdrop package</strong></div><span class="amt">$150</span></div>
+          <div class="addon"><div><strong>D&eacute;cor staging</strong><small>Balloons, table styling</small></div><span class="amt">from $85</span></div>
+          <div class="addon"><div><strong>Coffee &amp; beverage station</strong></div><span class="amt">$45</span></div>
+          <div class="addon"><div><strong>Projector &amp; screen / AV setup</strong></div><span class="amt">$50</span></div>
+          <div class="addon"><div><strong>Deep clean</strong><small>Catering, confetti, d&eacute;cor</small></div><span class="amt">$50</span></div>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="section" id="fits">
-    <div class="section-inner">
-      <p class="eyebrow">Make the room yours</p>
-      <h2>What fits beautifully.</h2>
-
-      <div class="fits-grid">
-        <div class="fit-card">
-          <div class="fit-num">01</div>
-          <h3>Celebrate</h3>
-          <p>Birthdays, showers, intimate gatherings, and moments worth making a little extra.</p>
-          <div class="fit-arrow">↗</div>
-        </div>
-        <div class="fit-card">
-          <div class="fit-num">02</div>
-          <h3>Create</h3>
-          <p>Photo and video shoots, workshops, content days, pop-ups, and hands-on classes.</p>
-          <div class="fit-arrow">↗</div>
-        </div>
-        <div class="fit-card">
-          <div class="fit-num">03</div>
-          <h3>Perform</h3>
-          <p>Rehearsals, auditions, movement sessions, readings, and creative showcases.</p>
-          <div class="fit-arrow">↗</div>
-        </div>
-      </div>
+    <div class="includes">
+      <h3>what every booking includes</h3>
+      <p>Private use of 612 N. High St. &bull; Tables and chairs for up to 30 &bull; Setup and cleanup &bull; Wi-Fi, Bluetooth sound and climate control &bull; Bring your own food and drink</p>
     </div>
-  </section>
 
-  <section class="section flex-section">
-    <div class="section-inner">
-      <p class="eyebrow">In the heart of the Short North Arts District</p>
-      <h2>Flexible by design.<br>The essentials are already here.</h2>
+    <p class="kids-line">Planning a kids party? <a href="kids-parties/">Squishy $399, Neon Slime $449, Princess $499</a>. Two hours, +$25 per extra kid, $50 non-refundable deposit to book.</p>
 
-      <ul class="flex-list">
-        <li><span class="fnum">01</span> 1,103 sq. ft. flexible floor plan</li>
-        <li><span class="fnum">02</span> Capacity for up to 30 guests</li>
-        <li><span class="fnum">03</span> Natural light + camera-friendly styling</li>
-        <li><span class="fnum">04</span> Tables + seating included</li>
-        <li><span class="fnum">05</span> Small stage add-on — $50</li>
-        <li><span class="fnum">06</span> Kitchen, restroom + Bluetooth-ready space</li>
-      </ul>
-      <a class="button button-cream" href="#location">Tell us your plan <span class="arrow">→</span></a>
+    <div class="price-actions">
+      <a class="pill red" href="https://www.peerspace.com/pages/listings/697455a9e9f85bc77b30f5e9" target="_blank" rel="noopener">Book on Peerspace</a>
+      <a class="pill ghost" href="tel:+16144142205">Call 614-414-2205</a>
+      <a class="pill ghost" href="mailto:info@short-north-studio.com">Email us</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="slime-party">
-    <div class="section-inner">
-      <div class="promo">
-        <div class="stars">★ BEST. PARTY. EVER. ★</div>
-        <p class="eyebrow" style="justify-content:center;display:flex;">Squishy + Slime Birthday Parties</p>
-        <h2>Big fun. Zero parent panic.</h2>
-        <p>We handle the activities, supplies, music, setup, and cleanup. Kids paint their own squishy, make custom slime, and take both creations home.</p>
-        <div class="price">From $399 <span>2 hours · up to 8 kids</span></div>
-        <a class="button button-primary" href="#location">Start a party inquiry <span class="arrow">→</span></a>
-      </div>
+<section id="book" class="panel" data-section>
+  <div class="wrap">
+    <h2 class="h-display split" data-split>book the room.</h2>
+    <p class="lede">Pick your hours on Peerspace, or call and we'll help you plan it.</p>
+    <div class="actions">
+      <a class="pill red" href="https://www.peerspace.com/pages/listings/697455a9e9f85bc77b30f5e9" target="_blank" rel="noopener">Book on Peerspace</a>
+      <a class="pill ghost" href="tel:+16144142205">Call 614-414-2205</a>
     </div>
-  </section>
-
-  <section class="section tight">
-    <div class="section-inner">
-      <p class="eyebrow">Simple from the start</p>
-      <h2>How booking works.</h2>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Choose your date</h3>
-          <p>Tell us your date, guest count, and the experience you have in mind.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Share your plan</h3>
-          <p>Walk us through how you'd like the room set up — classroom, open floor, staged, or styled for shoots.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Make it yours</h3>
-          <p>Arrive, set up, and settle in. The space is ready to flex around whatever you're bringing to it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="location">
-    <div class="section-inner location-grid">
-      <div>
-        <p class="eyebrow">Come find us</p>
-        <h2>Right where Columbus creates.</h2>
-        <ul class="loc-list">
-          <li><span class="loc-label">Address</span><span class="loc-value">612 N High Street, Columbus, OH 43215</span></li>
-          <li><span class="loc-label">Phone / Text</span><span class="loc-value">(614) 414-2205</span></li>
-          <li><span class="loc-label">Access</span><span class="loc-value">By appointment + reservation</span></li>
-        </ul>
-        <a class="button button-primary" href="https://maps.google.com/?q=612+N+High+Street+Columbus+OH+43215" target="_blank" rel="noopener">Get directions <span class="arrow">↗</span></a>
-      </div>
-      <div class="loc-panel">
-        <span>Short North Studio</span>
-        <strong>612 N High Street</strong>
-      </div>
-    </div>
-  </section>
-
-  <section class="section final-cta">
-    <div class="section-inner">
-      <p class="eyebrow" style="justify-content:center;display:flex;">Your idea deserves a room</p>
-      <h2>Let's make something happen.</h2>
-      <a class="button button-primary" href="#location">Check availability <span class="arrow">↗</span></a>
-      <p class="tagline">Creative studio + intimate event space in Columbus, Ohio.</p>
-    </div>
-  </section>
-
+    <address>612 N. High St., Columbus, OH 43215</address>
+  </div>
+</section>
 </main>
 
 <footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <img class="logo-mark" src="assets/logo-light.svg" alt="Short North Studio" width="118" height="52">
-      <ul class="footer-links">
-        <li><a href="#slime-party">Baby Showers</a></li>
-        <li><a href="#top">About</a></li>
-        <li><a href="#location">Contact</a></li>
-        <li><a href="#">Privacy</a></li>
+  <div class="wrap">
+    <div>
+      <img class="logos" loading="lazy" decoding="async" src="img/footer-logos.webp" alt="Short North Studio and Sun Studio Tan">
+      <div class="sig">Built with pride. Signed by <img src="img/signature.webp" alt="JA"></div>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <p>612 N. High St.<br>Columbus, OH 43215<br><a href="tel:+16144142205">614-414-2205</a></p>
+    </div>
+    <div>
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="https://short-north-studio.wixstudio.com/snorthstudio">Our place</a></li>
+        <li><a href="https://short-north-studio.wixstudio.com/snorthstudio/trainers">Rent our studio</a></li>
+        <li><a href="https://short-north-studio.wixstudio.com/snorthstudio/pricing-plans/list">Plans</a></li>
+        <li><a href="#tour">360 tour</a></li>
+        <li><a href="#pricing">Event packages &amp; pricing</a></li>
+        <li><a href="baby-showers/">Baby shower packages</a></li>
+        <li><a href="event-support/">Event support package</a></li>
+        <li><a href="kids-parties/">Kids parties</a></li>
+        <li><a href="estimate/">Get an estimate</a></li>
+        <li><a href="https://www.peerspace.com/pages/listings/697455a9e9f85bc77b30f5e9" target="_blank" rel="noopener">Book on Peerspace</a></li>
       </ul>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Short North Studio</span>
-      <span>612 N High Street, Columbus, OH</span>
-    </div>
+    <p class="legal">© 2026 Short North Studio</p>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+const FRAMES_D = ["frames/d/000.webp", "frames/d/001.webp", "frames/d/002.webp", "frames/d/003.webp", "frames/d/004.webp", "frames/d/005.webp", "frames/d/006.webp", "frames/d/007.webp", "frames/d/008.webp", "frames/d/009.webp", "frames/d/010.webp", "frames/d/011.webp", "frames/d/012.webp", "frames/d/013.webp", "frames/d/014.webp", "frames/d/015.webp", "frames/d/016.webp", "frames/d/017.webp", "frames/d/018.webp", "frames/d/019.webp", "frames/d/020.webp", "frames/d/021.webp", "frames/d/022.webp", "frames/d/023.webp", "frames/d/024.webp", "frames/d/025.webp", "frames/d/026.webp", "frames/d/027.webp", "frames/d/028.webp", "frames/d/029.webp", "frames/d/030.webp", "frames/d/031.webp", "frames/d/032.webp", "frames/d/033.webp", "frames/d/034.webp", "frames/d/035.webp", "frames/d/036.webp", "frames/d/037.webp", "frames/d/038.webp", "frames/d/039.webp", "frames/d/040.webp", "frames/d/041.webp", "frames/d/042.webp", "frames/d/043.webp", "frames/d/044.webp", "frames/d/045.webp", "frames/d/046.webp", "frames/d/047.webp", "frames/d/048.webp", "frames/d/049.webp", "frames/d/050.webp", "frames/d/051.webp", "frames/d/052.webp", "frames/d/053.webp", "frames/d/054.webp", "frames/d/055.webp", "frames/d/056.webp", "frames/d/057.webp", "frames/d/058.webp", "frames/d/059.webp", "frames/d/060.webp", "frames/d/061.webp", "frames/d/062.webp", "frames/d/063.webp", "frames/d/064.webp", "frames/d/065.webp", "frames/d/066.webp", "frames/d/067.webp", "frames/d/068.webp", "frames/d/069.webp", "frames/d/070.webp", "frames/d/071.webp", "frames/d/072.webp", "frames/d/073.webp", "frames/d/074.webp", "frames/d/075.webp", "frames/d/076.webp", "frames/d/077.webp", "frames/d/078.webp"];
+const FRAMES_M = ["frames/m/000.webp", "frames/m/001.webp", "frames/m/002.webp", "frames/m/003.webp", "frames/m/004.webp", "frames/m/005.webp", "frames/m/006.webp", "frames/m/007.webp", "frames/m/008.webp", "frames/m/009.webp", "frames/m/010.webp", "frames/m/011.webp", "frames/m/012.webp", "frames/m/013.webp", "frames/m/014.webp", "frames/m/015.webp", "frames/m/016.webp", "frames/m/017.webp", "frames/m/018.webp", "frames/m/019.webp", "frames/m/020.webp", "frames/m/021.webp", "frames/m/022.webp", "frames/m/023.webp", "frames/m/024.webp", "frames/m/025.webp", "frames/m/026.webp", "frames/m/027.webp", "frames/m/028.webp", "frames/m/029.webp", "frames/m/030.webp", "frames/m/031.webp", "frames/m/032.webp", "frames/m/033.webp", "frames/m/034.webp", "frames/m/035.webp", "frames/m/036.webp", "frames/m/037.webp", "frames/m/038.webp", "frames/m/039.webp", "frames/m/040.webp", "frames/m/041.webp", "frames/m/042.webp", "frames/m/043.webp", "frames/m/044.webp", "frames/m/045.webp", "frames/m/046.webp", "frames/m/047.webp", "frames/m/048.webp", "frames/m/049.webp", "frames/m/050.webp", "frames/m/051.webp", "frames/m/052.webp", "frames/m/053.webp", "frames/m/054.webp", "frames/m/055.webp", "frames/m/056.webp", "frames/m/057.webp", "frames/m/058.webp", "frames/m/059.webp", "frames/m/060.webp", "frames/m/061.webp", "frames/m/062.webp", "frames/m/063.webp", "frames/m/064.webp", "frames/m/065.webp", "frames/m/066.webp", "frames/m/067.webp", "frames/m/068.webp", "frames/m/069.webp", "frames/m/070.webp", "frames/m/071.webp", "frames/m/072.webp", "frames/m/073.webp", "frames/m/074.webp", "frames/m/075.webp", "frames/m/076.webp", "frames/m/077.webp", "frames/m/078.webp"];
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.getElementById('reel'), ctx = canvas.getContext('2d');
+  const hero = document.getElementById('hero');
+  const loader = document.getElementById('loader'), loadbar = document.getElementById('loadbar'), loadtxt = document.getElementById('loadtxt');
+  let set = null, imgs = [], cur = -1, target = 0, ready = false, isMobile = null;
+
+  function pickSet(){
+    const m = innerWidth < 768;
+    if (m === isMobile) return;
+    isMobile = m; set = m ? FRAMES_M : FRAMES_D; load();
+  }
+  // Load frames coarse-to-fine: a spread of keyframes first so the hero appears fast,
+  // then fill in the rest in the background. Missing frames fall back to the nearest loaded one.
+  let loaded = [];
+  function load(){
+    const n = set.length, order = [], seen = new Set(), mySet = set;
+    [16,8,4,2,1].forEach(s=>{ for(let i=0;i<n;i+=s){ if(!seen.has(i)){ seen.add(i); order.push(i); } } });
+    if(!seen.has(n-1)){ order.splice(1,0,n-1); }
+    imgs = new Array(n); loaded = new Array(n).fill(false);
+    const firstBatch = Math.ceil(n/8)+1; let done = 0, next = 0, active = 0;
+    function pump(){
+      while(active < 6 && next < order.length){
+        const i = order[next++], im = new Image(); active++;
+        im.decoding = 'async';
+        im.onload = im.onerror = ()=>{
+          if (mySet !== set) return;
+          active--; done++; if (im.naturalWidth) loaded[i] = true;
+          if (!ready){
+            const pct = Math.min(100, Math.round(done/firstBatch*100));
+            loadbar.style.width = pct+'%'; loadtxt.textContent = 'Setting up the room… '+pct+'%';
+            if (done >= firstBatch){ ready = true; cur = -1; sizeCanvas(); draw(true); loader.classList.add('done'); revealHero(); }
+          } else if (Math.abs(i - Math.round(shown)) <= 1){ cur = -1; }
+          pump();
+        };
+        im.src = mySet[i]; imgs[i] = im;
+      }
+    }
+    pump();
+  }
+  function nearestLoaded(i){
+    for (let d=0; d<imgs.length; d++){
+      if (loaded[i-d]) return i-d;
+      if (loaded[i+d]) return i+d;
+    }
+    return -1;
+  }
+  function sizeCanvas(){
+    const dpr = Math.min(devicePixelRatio||1, 2);
+    canvas.width = Math.round(canvas.clientWidth*dpr); canvas.height = Math.round(canvas.clientHeight*dpr);
+    cur = -1;
+  }
+  function drawFrame(i){
+    const j = loaded[i] ? i : nearestLoaded(i); if (j < 0) return; const im = imgs[j];
+    const cw = canvas.width, ch = canvas.height, r = Math.max(cw/im.naturalWidth, ch/im.naturalHeight);
+    const w = im.naturalWidth*r, h = im.naturalHeight*r;
+    ctx.drawImage(im,(cw-w)/2,(ch-h)/2,w,h);
+  }
+  function heroProgress(){
+    const r = hero.getBoundingClientRect(), span = hero.offsetHeight - innerHeight;
+    return Math.min(1, Math.max(0, -r.top/span));
+  }
+  let shown = 0;
+  function draw(force){
+    if (!ready) return;
+    const idx = Math.round(target*(imgs.length-1));
+    // ease toward target for smooth scrubbing
+    shown += (idx - shown) * (reduce ? 1 : 0.22);
+    const f = Math.round(shown);
+    if (f !== cur || force){ cur = f; drawFrame(f); }
+  }
+
+  // hero overlays
+  const heroCopy = document.getElementById('heroCopy'), caps = [...document.querySelectorAll('#captions p')];
+  const counter = document.getElementById('counter'), hint = document.getElementById('scrollhint');
+  function revealHero(){ heroCopy.querySelector('[data-split]').classList.add('in'); }
+  function heroOverlay(p){
+    const introEnd = 0.1;
+    heroCopy.style.opacity = Math.max(0, 1 - p/introEnd);
+    heroCopy.style.transform = 'translateY('+(-p/introEnd*30)+'px)';
+    heroCopy.style.pointerEvents = p < introEnd*0.6 ? 'auto' : 'none';
+    hint.style.opacity = p < 0.03 ? 1 : 0;
+    let active = -1;
+    if (p > introEnd) active = Math.min(caps.length-1, Math.floor(p*caps.length));
+    caps.forEach((c,i)=>c.classList.toggle('on', i===active));
+    counter.classList.toggle('on', active>=0);
+    if (active>=0) counter.textContent = String(active+1).padStart(2,'0')+' / '+String(caps.length).padStart(2,'0');
+  }
+
+  // letter split
+  document.querySelectorAll('[data-split]').forEach(el=>{
+    const parts = el.innerHTML.split(/<br\s*\/?>/i); let n = 0;
+    el.setAttribute('aria-label', el.textContent.replace(/\s+/g,' ').trim());
+    el.innerHTML = parts.map(line => line.trim().split(' ').map(word =>
+      '<span class="w" aria-hidden="true">'+[...word].map(c=>'<span class="ch" style="transition-delay:'+(n++*22)+'ms">'+c+'</span>').join('')+'</span>'
+    ).join(' ')).join('<br>');
+  });
+  const splitIO = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting && e.target.closest('#hero')===null){ e.target.classList.add('in'); splitIO.unobserve(e.target);} }),{threshold:.4});
+  document.querySelectorAll('[data-split]').forEach(el=>splitIO.observe(el));
+
+  // counters
+  const countIO = new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return; countIO.unobserve(e.target);
+    const el = e.target, end = +el.dataset.count, sep = el.dataset.sep, t0 = performance.now(), dur = reduce ? 0 : 1400;
+    const fmt = v => sep ? v.toLocaleString('en-US') : String(v);
+    (function step(t){ const k = dur ? Math.min(1,(t-t0)/dur) : 1, e2 = 1-Math.pow(1-k,3); el.textContent = fmt(Math.round(end*e2)); if(k<1) requestAnimationFrame(step); })(t0);
+  }),{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
+
+  // uses list: light up the row nearest viewport center
+  const usesItems = [...document.querySelectorAll('#usesList li')];
+
+  // nav dots
+  const dots = [...document.querySelectorAll('#dots a')];
+  const secIO = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) dots.forEach(d=>d.classList.toggle('on', d.dataset.s===e.target.id)); }),{rootMargin:'-45% 0px -45% 0px'});
+  document.querySelectorAll('[data-section]').forEach(s=>secIO.observe(s));
+
+  // gallery parallax
+  const tiles = [...document.querySelectorAll('.tile[data-speed]')];
+  const prog = document.getElementById('prog'), topnav = document.getElementById('topnav');
+
+  function onScroll(){
+    const max = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = 'scaleX('+(max>0 ? scrollY/max : 0)+')';
+    const p = heroProgress(); target = p; heroOverlay(p);
+    topnav.classList.toggle('solid', p >= 1);
+    if (!reduce && innerWidth >= 768){
+      const mid = innerHeight/2;
+      tiles.forEach(t=>{ const r = t.getBoundingClientRect(); if (r.bottom<-200||r.top>innerHeight+200) return; t.style.transform = 'translateY('+((r.top+r.height/2-mid)*+t.dataset.speed).toFixed(1)+'px)'; });
+    }
+    let best = null, bd = 1e9;
+    usesItems.forEach(li=>{ const r = li.getBoundingClientRect(), d = Math.abs(r.top + r.height/2 - innerHeight/2); if (d<bd){bd=d;best=li;} });
+    usesItems.forEach(li=>li.classList.toggle('lit', li===best && bd < innerHeight*0.35));
+  }
+
+  // ambient dust motes, like light through a studio window
+  const mc = document.getElementById('motes'), mx = mc.getContext('2d'); let motes = [];
+  function sizeMotes(){ const d = Math.min(devicePixelRatio||1,2); mc.width = innerWidth*d; mc.height = innerHeight*d; mx.setTransform(d,0,0,d,0,0);
+    motes = Array.from({length: innerWidth<768 ? 18 : 36}, ()=>({x:Math.random()*innerWidth, y:Math.random()*innerHeight, r:Math.random()*1.6+.4, vx:(Math.random()-.5)*.12, vy:-(Math.random()*.18+.04), a:Math.random()*.35+.08})); }
+  function tickMotes(){ mx.clearRect(0,0,innerWidth,innerHeight);
+    for (const m of motes){ m.x+=m.vx; m.y+=m.vy; if(m.y<-5){m.y=innerHeight+5; m.x=Math.random()*innerWidth;} if(m.x<-5)m.x=innerWidth+5; if(m.x>innerWidth+5)m.x=-5;
+      mx.beginPath(); mx.arc(m.x,m.y,m.r,0,6.283); mx.fillStyle='rgba(255,250,242,'+m.a+')'; mx.fill(); } }
+
+  function loop(){ draw(false); if(!reduce) tickMotes(); requestAnimationFrame(loop); }
+
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', ()=>{ pickSet(); sizeCanvas(); draw(true); sizeMotes(); onScroll(); });
+  pickSet(); sizeMotes(); onScroll(); requestAnimationFrame(loop);
+})();
+</script>
+<img src="https://tracker.metricool.com/c3po.jpg?hash=b436fedbc63d5b6152e43e9d8d4694c2" style="display:none" alt="" width="1" height="1">
 </body>
 </html>
