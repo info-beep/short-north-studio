@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get an Estimate | Short North Studio</title>
+<link rel="canonical" href="https://short-north-studio.com/estimate/">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="description" content="Get an instant estimate for your party, shower or private event at Short North Studio, 612 N. High St, Columbus.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0b; --text:#fff; --muted:rgba(255,255,255,.6); --faint:rgba(255,255,255,.38);
+    --red:#D53C3A; --red-deep:#b12c2a; --cream:#FFFAF2;
+    --panel:rgba(255,255,255,.04); --card:rgba(255,255,255,.05); --line:rgba(255,255,255,.12);
+    --display:"Bricolage Grotesque","Arial Black","Helvetica Neue",Arial,sans-serif;
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--ink)}
+  body{margin:0;color:var(--text);font:1.05rem/1.55 var(--serif);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px}
+  /* site nav (matches home page) */
+  .topnav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:calc(env(safe-area-inset-top,0px) + 14px) clamp(16px,4vw,48px) 14px;background:rgba(10,10,11,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .topnav .brand img{height:40px;width:auto;display:block}
+  .topnav ul{display:flex;gap:clamp(12px,2.4vw,32px);list-style:none;margin:0;padding:0;font:500 .95rem var(--display)}
+  .topnav ul a{text-decoration:none;color:var(--muted);transition:color .2s}
+  .topnav ul a:hover,.topnav ul a[aria-current]{color:var(--text)}
+  .pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:.6em 1.15em;font:800 .9rem var(--display);text-decoration:none;white-space:nowrap;background:var(--red);color:#fff}
+  .pill:hover{background:var(--red-deep)}
+  @media (max-width:767px){.topnav ul{display:none}.topnav .brand img{height:34px}}
+
+  .sns-calc{max-width:1120px;margin:0 auto;padding:56px 16px 72px}
+  .sns-head{text-align:center;margin-bottom:40px}
+  .sns-eyebrow{letter-spacing:.2em;text-transform:uppercase;font:500 .78rem var(--display);color:var(--red)}
+  .sns-head h1{font:800 clamp(40px,7vw,76px)/.95 var(--display);letter-spacing:-.03em;margin:12px 0 14px}
+  .sns-head p{color:var(--muted);margin:0 auto;max-width:560px;font-size:1.15rem}
+  .sns-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+  @media (max-width:880px){.sns-grid{grid-template-columns:1fr}}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin-bottom:20px}
+  .step h2{font:800 1.6rem/1.1 var(--display);letter-spacing:-.02em;margin:0 0 6px;display:flex;gap:12px;align-items:baseline}
+  .step h2 em{font-style:normal}
+  .step h2 span{font:800 .8rem var(--display);color:var(--red);letter-spacing:.12em}
+  .step .sub{color:var(--muted);font-size:1rem;margin:0 0 18px}
+  .types,.pkgs{display:grid;gap:12px}
+  .types{grid-template-columns:repeat(3,1fr)}
+  .pkgs{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  @media (max-width:600px){.types{grid-template-columns:1fr}}
+  .opt{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;cursor:pointer;text-align:left;color:inherit;font:inherit;transition:border-color .15s,transform .15s,background .15s}
+  .opt:hover{border-color:rgba(255,255,255,.3);transform:translateY(-1px)}
+  .opt[aria-pressed="true"]{border-color:var(--red);background:rgba(213,60,58,.1);box-shadow:0 0 0 1px var(--red) inset}
+  .opt .t{font:800 1.05rem var(--display);letter-spacing:-.01em}
+  .opt .p{color:var(--cream);font:500 1.5rem var(--serif);font-style:italic;margin-top:2px}
+  .opt .d{color:var(--muted);font-size:.9rem;margin-top:6px;line-height:1.4}
+  .opt .badge{position:absolute;top:10px;right:10px;font:800 .62rem var(--display);letter-spacing:.1em;text-transform:uppercase;background:var(--red);color:#fff;padding:4px 8px;border-radius:99px}
+  .fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  label.f{display:block;font:500 .85rem var(--display);color:var(--muted)}
+  label.f input,label.f select,label.f textarea{display:block;width:100%;margin-top:6px;background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:12px;font:1rem var(--serif)}
+  label.f input:focus,label.f select:focus,label.f textarea:focus{outline:none;border-color:var(--red)}
+  input[type=date]::-webkit-calendar-picker-indicator,input[type=time]::-webkit-calendar-picker-indicator{filter:invert(.85)}
+  .stepper{display:flex;align-items:center;margin-top:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .stepper button{background:none;border:0;color:var(--red);font-size:22px;width:46px;height:46px;cursor:pointer}
+  .stepper button:disabled{opacity:.3;cursor:default}
+  .stepper output{flex:1;text-align:center;font:800 1.05rem var(--display)}
+  .addons{display:grid;gap:10px}
+  .addon{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+  .addon input{accent-color:var(--red);width:18px;height:18px;margin-top:4px}
+  .addon .n{flex:1}
+  .addon .n small{display:block;color:var(--muted)}
+  .addon .a{font:800 1rem var(--display);white-space:nowrap}
+  .note{font-size:.9rem;padding:10px 12px;border-radius:10px;margin-top:14px;display:none}
+  .note.show{display:block}
+  .note.warn{background:rgba(213,60,58,.12);border:1px solid rgba(213,60,58,.4);color:#ffb4b2}
+  .hidden{display:none!important}
+  .summary{position:sticky;top:90px;background:var(--cream);color:var(--ink);border-radius:var(--radius);padding:26px}
+  .summary h3{font:800 1.5rem var(--display);letter-spacing:-.02em;margin:0 0 14px}
+  .lines{list-style:none;margin:0;padding:0;font-size:.98rem}
+  .lines li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.15)}
+  .lines li span:first-child{color:#55555a}
+  .lines .empty{color:#55555a;border:0}
+  .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;font:500 .95rem var(--display)}
+  .total b{font:800 2.6rem var(--display);letter-spacing:-.03em;color:var(--red)}
+  .dep{font-size:.9rem;color:#55555a;margin-top:4px}
+  .fine{font-size:.82rem;color:#6b6b6e;margin-top:14px;line-height:1.45}
+  .fine a{color:var(--red)!important}
+  .btn{display:block;width:100%;margin-top:18px;background:var(--red);color:#fff;border:0;border-radius:999px;padding:15px;font:800 1rem var(--display);cursor:pointer}
+  .btn:hover{background:var(--red-deep)}
+  .btn:disabled{opacity:.35;cursor:not-allowed}
+  .success{text-align:center;padding:30px 10px}
+  .success h2{justify-content:center}
+  .err{color:#ffb4b2;font-size:.9rem;margin-top:10px}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <a class="brand" href="../" aria-label="Short North Studio home"><img src="../img/logo.webp" alt="Short North Studio"></a>
+  <ul>
+    <li><a href="../">The studio</a></li>
+    <li><a href="../baby-showers/">Baby showers</a></li>
+    <li><a href="../kids-parties/">Kids parties</a></li>
+    <li><a href="./" aria-current="page">Get an estimate</a></li>
+  </ul>
+  <a class="pill" href="https://www.peerspace.com/pages/listings/697455a9e9f85bc77b30f5e9" target="_blank" rel="noopener">Book now</a>
+</header>
+
+<section class="sns-calc" id="event-calculator">
+  <header class="sns-head">
+    <div class="sns-eyebrow">Short North Studio · 612 N. High St</div>
+    <h1>Price Your Event</h1>
+    <p>Pick your event, plug in the details, and get an instant estimate. Love the number? Request your date and we’ll confirm within 24 hours.</p>
+  </header>
+
+  <div class="sns-grid">
+    <div>
+      <!-- STEP 1 -->
+      <div class="step">
+        <h2><span>01</span> What are we celebrating?</h2>
+        <p class="sub">Choose an event type.</p>
+        <div class="types" id="types"></div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step hidden" id="step2">
+        <h2><span>02</span> <em id="step2title">Details</em></h2>
+        <p class="sub" id="step2sub"></p>
+
+        <div class="pkgs" id="pkgs"></div>
+
+        <div class="fields" style="margin-top:18px">
+          <label class="f">Event date
+            <input type="date" id="date">
+          </label>
+          <label class="f">Start time
+            <input type="time" id="time" step="1800" value="14:00">
+          </label>
+          <div class="f-wrap" id="guestWrap">
+            <label class="f" id="guestLabel">Number of guests</label>
+            <div class="stepper">
+              <button type="button" data-step="guests" data-dir="-1" aria-label="Fewer guests">−</button>
+              <output id="guestsOut">10</output>
+              <button type="button" data-step="guests" data-dir="1" aria-label="More guests">+</button>
+            </div>
+          </div>
+          <div class="f-wrap" id="hoursWrap">
+            <label class="f">Hours (3-hour minimum)</label>
+            <div class="stepper">
+              <button type="button" data-step="hours" data-dir="-1" aria-label="Fewer hours">−</button>
+              <output id="hoursOut">3</output>
+              <button type="button" data-step="hours" data-dir="1" aria-label="More hours">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="note warn" id="capNote"></div>
+
+        <div id="addonBlock" style="margin-top:20px">
+          <label class="f" style="margin-bottom:8px">Add-ons</label>
+          <div class="addons" id="addons"></div>
+        </div>
+      </div>
+
+      <!-- STEP 3: Netlify form (must stay in static HTML so Netlify detects it at deploy) -->
+      <div class="step hidden" id="step3">
+        <div id="formWrap">
+          <h2><span>03</span> Request your date</h2>
+          <p class="sub">No payment yet. We’ll confirm availability and send your booking link.</p>
+          <form name="event-estimate" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="leadForm">
+            <input type="hidden" name="form-name" value="event-estimate">
+            <p class="hidden"><label>Leave blank: <input name="bot-field"></label></p>
+            <input type="hidden" name="event_type">
+            <input type="hidden" name="package">
+            <input type="hidden" name="event_date">
+            <input type="hidden" name="start_time">
+            <input type="hidden" name="guests">
+            <input type="hidden" name="hours">
+            <input type="hidden" name="addons">
+            <input type="hidden" name="estimate_total">
+            <input type="hidden" name="deposit">
+            <input type="hidden" name="estimate_breakdown">
+            <div class="fields">
+              <label class="f">Your name
+                <input name="name" required autocomplete="name">
+              </label>
+              <label class="f">Email
+                <input name="email" type="email" required autocomplete="email">
+              </label>
+              <label class="f">Phone
+                <input name="phone" type="tel" required autocomplete="tel">
+              </label>
+              <label class="f">Guest of honor (optional)
+                <input name="honoree" placeholder="e.g. Mia turning 7">
+              </label>
+            </div>
+            <label class="f" style="margin-top:16px">Anything else? Theme, colors, allergies, questions
+              <textarea name="notes" rows="3"></textarea>
+            </label>
+            <button class="btn" type="submit" id="submitBtn">Send My Request</button>
+            <div class="err" id="formErr"></div>
+          </form>
+        </div>
+        <div class="success hidden" id="success">
+          <h2>You’re on the list</h2>
+          <p class="sub">We got your request and your estimate. Expect a text or email from us within 24 hours to lock in your date.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <aside class="summary" aria-live="polite">
+      <h3>Your Estimate</h3>
+      <ul class="lines" id="lines"><li class="empty">Choose an event type to start.</li></ul>
+      <div class="total"><span>Estimated total</span><b id="total">$0</b></div>
+      <div class="dep" id="deposit"></div>
+      <button class="btn" id="goForm" disabled>Request This Date</button>
+      <p class="fine">Estimate only. Final price is confirmed at booking; sales tax may apply. Questions? Call or text <a href="tel:+16144142205" >614-414-2205</a>.</p>
+    </aside>
+  </div>
+</section>
+<footer class="wrap" style="padding:24px 0 40px"><a href="/">Short North Studio</a> · <a href="/privacy/">Privacy Policy</a></footer>
+
+<script>
+(function(){
+  /* ================= PRICING: edit here ================= */
+  const PRICING = {
+    kids: {
+      label: "Kids Party",
+      blurb: "2-hour themed party, fully hosted",
+      from: 399,
+      deposit: 50,                 // non-refundable, to book
+      depositNote: "$50 non-refundable deposit to book",
+      extraGuest: 25,              // per extra kid
+      maxGuests: 20,
+      guestLabel: "Number of kids",
+      packages: [
+        {id:"squishy",  name:"Squishy Party",    price:399, included:8,  desc:"2 hrs · up to 8 kids · squishy crafting"},
+        {id:"neon",     name:"Neon Slime Party", price:449, included:10, desc:"2 hrs · up to 10 kids · glow slime lab, blacklights, dance lights", badge:"Popular"},
+        {id:"princess", name:"Princess Party",   price:499, included:10, desc:"2 hrs · up to 10 kids · sparkling cider toast + staff group photos"}
+      ],
+      addons: []                   // add kids add-ons here: {id, name, price, note}
+    },
+    shower: {
+      label: "Baby Shower",
+      blurb: "Styled, catered & cleaned up for you",
+      from: 695,
+      deposit: null,               // set a number (e.g. 200) to show a deposit line
+      extraGuest: 30,              // per guest over the package limit
+      guestLabel: "Number of guests",
+      maxGuests: 40,
+      packages: [
+        {id:"sweet",     name:"Sweet & Simple",  price:695,  cap:12, desc:"2 hrs · up to 12 guests · décor, backdrop, light refreshments"},
+        {id:"glow",      name:"Gather & Glow",   price:1095, cap:18, desc:"2.5 hrs · up to 18 guests · brunch bites, drinks, cake, event support", badge:"Popular"},
+        {id:"signature", name:"Signature Celebration", price:1895, cap:25, desc:"3 hrs + 1 hr early access · up to 25 guests · catered spread, event host"}
+      ],
+      addons: []
+    },
+    rental: {
+      label: "Private Space Rental",
+      blurb: "Your event, our space. Birthdays, showers, meetings, shoots",
+      from: 375,
+      hourly: 125,
+      minHours: 3,
+      maxHours: 10,
+      deposit: null,
+      guestLabel: "Number of guests",
+      maxGuests: 40,
+      packages: [],
+      // Includes 6 chairs, three 4-ft tables + 1 square table, TV
+      addons: [
+        {id:"speaker", name:"Harman Kardon Bluetooth speaker", price:30, note:"Bring your playlist"},
+        {id:"early",   name:"30-min early setup access",       price:50, note:"Get in early to decorate"},   // PLACEHOLDER PRICE
+        {id:"movie",   name:"Movie-night setup",               price:40, note:"Sectional repositioned for the TV"} // PLACEHOLDER PRICE
+      ]
+    }
+  };
+  /* ====================================================== */
+
+  const $ = s => document.querySelector(s);
+  const money = n => "$" + n.toLocaleString("en-US",{minimumFractionDigits: n%1?2:0, maximumFractionDigits:2});
+  const state = {type:null, pkg:null, guests:10, hours:3, addons:new Set()};
+
+  // Min date = today
+  const d = new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
+  $("#date").min = d.toISOString().slice(0,10);
+
+  // Render type cards
+  $("#types").innerHTML = Object.entries(PRICING).map(([k,v]) =>
+    `<button type="button" class="opt" data-type="${k}" aria-pressed="false">
+       <div class="t">${v.label}</div>
+       <div class="p">from ${money(v.from)}</div>
+       <div class="d">${v.blurb}</div>
+     </button>`).join("");
+
+  $("#types").addEventListener("click", e => {
+    const b = e.target.closest("[data-type]"); if(!b) return;
+    selectType(b.dataset.type);
+  });
+
+  function selectType(t){
+    state.type = t; state.addons.clear();
+    const cfg = PRICING[t];
+    document.querySelectorAll("[data-type]").forEach(b => b.setAttribute("aria-pressed", b.dataset.type===t));
+    $("#step2").classList.remove("hidden");
+    $("#step2title").textContent = cfg.label + " details";
+    $("#step2sub").textContent = t==="rental"
+      ? "Includes 6 chairs, three 4-ft tables, a square table and the TV. $125/hour, 3-hour minimum."
+      : "Pick a package, then tell us about your crowd.";
+    $("#guestLabel").textContent = cfg.guestLabel;
+    $("#hoursWrap").classList.toggle("hidden", t!=="rental");
+
+    // packages
+    state.pkg = cfg.packages[1]?.id || cfg.packages[0]?.id || null;
+    $("#pkgs").classList.toggle("hidden", !cfg.packages.length);
+    renderPkgs();
+
+    // sensible default guest counts
+    state.guests = t==="kids" ? 10 : t==="shower" ? 15 : 12;
+    state.hours = cfg.minHours || 3;
+
+    // add-ons
+    $("#addonBlock").classList.toggle("hidden", !cfg.addons.length);
+    $("#addons").innerHTML = cfg.addons.map(a =>
+      `<label class="addon"><input type="checkbox" value="${a.id}">
+        <span class="n">${a.name}${a.note?`<small>${a.note}</small>`:""}</span>
+        <span class="a">+${money(a.price)}</span></label>`).join("");
+    update();
+  }
+
+  function renderPkgs(){
+    const cfg = PRICING[state.type];
+    $("#pkgs").innerHTML = cfg.packages.map(p =>
+      `<button type="button" class="opt" data-pkg="${p.id}" aria-pressed="${p.id===state.pkg}">
+        ${p.badge?`<span class="badge">${p.badge}</span>`:""}
+        <div class="t">${p.name}</div><div class="p">${money(p.price)}</div><div class="d">${p.desc}</div>
+      </button>`).join("");
+  }
+
+  $("#pkgs").addEventListener("click", e => {
+    const b = e.target.closest("[data-pkg]"); if(!b) return;
+    state.pkg = b.dataset.pkg; renderPkgs(); update();
+  });
+
+  $("#addons").addEventListener("change", e => {
+    if(e.target.checked) state.addons.add(e.target.value); else state.addons.delete(e.target.value);
+    update();
+  });
+
+  document.querySelectorAll("[data-step]").forEach(b => b.addEventListener("click", () => {
+    const k = b.dataset.step, dir = +b.dataset.dir, cfg = PRICING[state.type];
+    if(k==="guests") state.guests = Math.min(cfg.maxGuests, Math.max(1, state.guests + dir));
+    else state.hours = Math.min(cfg.maxHours, Math.max(cfg.minHours, state.hours + dir));
+    update();
+  }));
+  ["#date","#time"].forEach(s => $(s).addEventListener("change", update));
+
+  function calc(){
+    const cfg = PRICING[state.type], lines = []; let total = 0, warn = "";
+    if(state.type==="kids"){
+      const p = cfg.packages.find(x=>x.id===state.pkg);
+      lines.push([p.name + ` (up to ${p.included} kids)`, p.price]); total += p.price;
+      const extra = Math.max(0, state.guests - p.included);
+      if(extra){ lines.push([`${extra} extra kid${extra>1?"s":""} × ${money(cfg.extraGuest)}`, extra*cfg.extraGuest]); total += extra*cfg.extraGuest; }
+    }
+    if(state.type==="shower"){
+      const p = cfg.packages.find(x=>x.id===state.pkg);
+      lines.push([p.name + ` (up to ${p.cap} guests)`, p.price]); total += p.price;
+      const extra = Math.max(0, state.guests - p.cap);
+      if(extra){ lines.push([`${extra} extra guest${extra>1?"s":""} × ${money(cfg.extraGuest)}`, extra*cfg.extraGuest]); total += extra*cfg.extraGuest; }
+    }
+    if(state.type==="rental"){
+      lines.push([`Studio rental · ${state.hours} hrs × ${money(cfg.hourly)}`, state.hours*cfg.hourly]); total += state.hours*cfg.hourly;
+    }
+    cfg.addons.filter(a=>state.addons.has(a.id)).forEach(a => { lines.push([a.name, a.price]); total += a.price; });
+    return {lines, total, warn, deposit: cfg.deposit};
+  }
+
+  function update(){
+    if(!state.type) return;
+    const cfg = PRICING[state.type];
+    $("#guestsOut").textContent = state.guests;
+    $("#hoursOut").textContent = state.hours;
+    document.querySelector('[data-step="guests"][data-dir="-1"]').disabled = state.guests<=1;
+    document.querySelector('[data-step="guests"][data-dir="1"]').disabled = state.guests>=cfg.maxGuests;
+    if(cfg.minHours){
+      document.querySelector('[data-step="hours"][data-dir="-1"]').disabled = state.hours<=cfg.minHours;
+      document.querySelector('[data-step="hours"][data-dir="1"]').disabled = state.hours>=cfg.maxHours;
+    }
+
+    const r = calc();
+    const meta = [];
+    if($("#date").value) meta.push(["Date", new Date($("#date").value+"T12:00").toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})]);
+    if($("#time").value) meta.push(["Start", fmtTime($("#time").value)]);
+    meta.push([state.type==="kids" ? "Kids" : "Guests", state.guests]);
+
+    $("#lines").innerHTML =
+      r.lines.map(([n,a])=>`<li><span>${n}</span><span>${money(a)}</span></li>`).join("") +
+      meta.map(([n,v])=>`<li><span>${n}</span><span>${v}</span></li>`).join("");
+    $("#total").textContent = money(r.total);
+    $("#deposit").textContent = r.deposit ? `Due to book: ${money(r.deposit)} deposit` : "";
+    const n = $("#capNote"); n.textContent = r.warn; n.classList.toggle("show", !!r.warn);
+    $("#goForm").disabled = false;
+    fillHidden(r);
+  }
+
+  function fmtTime(v){ const [h,m]=v.split(":").map(Number); return `${(h%12)||12}:${String(m).padStart(2,"0")} ${h<12?"AM":"PM"}`; }
+
+  function fillHidden(r){
+    const f = $("#leadForm"), cfg = PRICING[state.type];
+    const pkg = cfg.packages.find(p=>p.id===state.pkg);
+    const set = (k,v) => f.elements[k].value = v;
+    set("event_type", cfg.label);
+    set("package", pkg ? pkg.name : "Hourly rental");
+    set("event_date", $("#date").value);
+    set("start_time", $("#time").value ? fmtTime($("#time").value) : "");
+    set("guests", state.guests);
+    set("hours", state.type==="rental" ? state.hours : "");
+    set("addons", cfg.addons.filter(a=>state.addons.has(a.id)).map(a=>a.name).join(", "));
+    set("estimate_total", money(r.total));
+    set("deposit", r.deposit ? money(r.deposit) : "");
+    set("estimate_breakdown", r.lines.map(([n,a])=>`${n}: ${money(a)}`).join(" | ") + (r.warn ? ` | NOTE: ${r.warn}` : ""));
+  }
+
+  $("#goForm").addEventListener("click", () => {
+    $("#step3").classList.remove("hidden");
+    $("#step3").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  $("#leadForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const f = e.target, btn = $("#submitBtn");
+    if(!$("#date").value){ $("#formErr").textContent = "Pick an event date in step 02 first."; return; }
+    $("#formErr").textContent = ""; btn.disabled = true; btn.textContent = "Sending…";
+    try{
+      const res = await fetch("/", {method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:new URLSearchParams(new FormData(f)).toString()});
+      if(!res.ok) throw new Error(res.status);
+      $("#formWrap").classList.add("hidden"); $("#success").classList.remove("hidden");
+    }catch(err){
+      btn.disabled = false; btn.textContent = "Send My Request";
+      $("#formErr").textContent = "Something glitched. Call or text us at 614-414-2205 and we’ll lock it in.";
+    }
+  });
+})();
+</script>
+</body>
+</html>
