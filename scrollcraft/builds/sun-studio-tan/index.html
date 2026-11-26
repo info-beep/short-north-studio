@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sun Studio Tan · Custom airbrush tans in the Short North</title>
+<meta name="description" content="Custom airbrush spray tans by hand at 612 North High Street, Columbus. Four levels, from Norvell Original to Evolv Heated Custom. Spray & Save membership $9.99 a month.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23F1E4D6'/><rect x='13' width='6' height='32' fill='%236A3F25'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Geist:wght@400..600&display=swap">
+<link rel="stylesheet" href="scrollcraft.css">
+<style>
+  :root {
+    /* Six roles. The page's own script rewrites canvas, ink and ink-soft as the
+       page tans; these are the "bare skin" starting values. */
+    --sc-canvas:     #F1E4D6;
+    --sc-surface:    #E9D7C5;
+    --sc-ink:        #2B1A10;
+    --sc-ink-soft:   #4E3626;
+    --sc-accent:     #FF6B2C;
+    --sc-accent-ink: #1C0F07;
+    --sc-font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+    --sc-font-text:    "Geist", system-ui, sans-serif;
+    --sc-shadow-color: 24 45% 12%;
+
+    --bare: #F1E4D6;   /* the "before". The tan line is painted in this. */
+    --rail-w: 11.5rem;
+  }
+  body { transition: color 260ms var(--sc-ease-out); }
+  main { position: relative; z-index: 1; }
+  main .sc-wrap { padding-right: calc(var(--sc-gutter) + var(--rail-w)); }
+
+  /* --------------------------------------------------- the tan line ---- */
+  .strap {
+    position: fixed; top: 0; bottom: 0; left: 0; width: 2.75rem;
+    z-index: 0; pointer-events: none;
+    background: var(--bare);
+    /* Real tan lines are soft at the edge, not ruled. */
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+    transform: translate3d(var(--strap-x, 50vw), 0, 0) translateX(-50%);
+    opacity: 0;
+    transition: opacity 320ms var(--sc-ease-out);
+  }
+  .strap.is-on { opacity: 1; }
+  .strap__tag {
+    position: absolute; left: 50%; bottom: 7.5rem;
+    translate: -50% 0; rotate: -90deg; transform-origin: center;
+    white-space: nowrap;
+    font: 600 0.68rem/1 var(--sc-font-text);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #2B1A10;
+    opacity: var(--strap-tag, 0);
+  }
+
+  /* ----------------------------------------------- shade rail (nav) ---- */
+  .rail {
+    position: fixed; z-index: var(--sc-z-chrome);
+    right: clamp(0.75rem, 2vw, 1.75rem); top: 50%; translate: 0 -50%;
+    display: grid; gap: var(--sc-2); justify-items: end;
+    font-size: var(--sc-t-xs);
+  }
+  .rail__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sc-1); }
+  .rail button, .rail a {
+    display: inline-flex; align-items: center; gap: var(--sc-2);
+    min-height: 2rem; padding: 0.25rem 0.5rem;
+    background: none; border: 0; cursor: pointer;
+    color: var(--sc-ink); text-decoration: none;
+    font-weight: 500; letter-spacing: 0.04em; white-space: nowrap;
+    border-radius: var(--sc-r-sm);
+    transition: opacity 160ms var(--sc-ease-out), transform 120ms var(--sc-ease-out);
+  }
+  .rail__list button { opacity: 0.62; }
+  .rail__list button[aria-current="true"] { opacity: 1; }
+  .rail__list button:hover { opacity: 1; }
+  .rail button:active, .rail a:active { transform: translateY(1px); }
+  .swatch {
+    width: 0.9rem; height: 0.9rem; border-radius: 50%;
+    background: var(--c);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--sc-ink) 30%, transparent);
+    transition: transform 160ms var(--sc-ease-out);
+  }
+  .rail__list button[aria-current="true"] .swatch { transform: scale(1.35); }
+  .rail__line { border-top: 1px solid var(--sc-hairline-strong); padding-top: var(--sc-2); display: grid; gap: var(--sc-1); justify-items: end; }
+  .rail__line button[aria-pressed="true"] { text-decoration: underline; text-underline-offset: 0.3em; }
+  .rail__book {
+    background: var(--sc-accent) !important; color: var(--sc-accent-ink) !important;
+    font-weight: 600 !important; padding: 0.45rem 0.8rem !important;
+    border-radius: var(--sc-r-pill) !important;
+    box-shadow: var(--sc-e1);
+  }
+
+  /* ----------------------------------------------------------- hero ---- */
+  .hero { overflow: clip; }
+  .hero__sun {
+    position: absolute; right: -6vw; bottom: -38vh;
+    width: min(78vw, 62rem); aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%,
+      color-mix(in oklab, var(--sc-accent) 60%, #FFC46B) 0%,
+      color-mix(in oklab, #FFC46B 55%, transparent) 38%,
+      transparent 70%);
+    opacity: 0.55;
+    transform: translate3d(0, calc(var(--sc-p, 0) * -22vh), 0) scale(calc(1 + var(--sc-p, 0) * 0.12));
+    z-index: 0; pointer-events: none;
+  }
+  .hero__word {
+    position: absolute; left: 50%; top: 46%;
+    translate: -50% -50%;
+    margin: 0;
+    font-family: var(--sc-font-display);
+    font-weight: 900; font-stretch: 125%;
+    font-size: clamp(9rem, 44vw, 46rem);
+    line-height: 0.8; letter-spacing: -0.05em;
+    color: color-mix(in oklab, var(--sc-ink) 9%, var(--sc-canvas));
+    transform: scale(calc(1 + var(--sc-p, 0) * 0.28));
+    transform-origin: 50% 60%;
+    z-index: 0; user-select: none; white-space: nowrap;
+  }
+  .hero__mark {
+    position: absolute; top: clamp(1.25rem, 4vh, 2.5rem); left: var(--sc-gutter);
+    z-index: 2; margin: 0;
+    font-family: var(--sc-font-display); font-weight: 800; font-stretch: 112%;
+    font-size: var(--sc-t-xl); letter-spacing: -0.02em; line-height: 1;
+    text-transform: uppercase;
+  }
+  .hero .sc-copy { z-index: 3; }
+  .hero h1 {
+    font-weight: 800; font-stretch: 100%;
+    font-size: clamp(3.4rem, 1.2rem + 7.4vw, 8.5rem);
+  }
+  .hero h1 em { font-style: italic; font-weight: 500; }
+  .hero__sub { margin-top: var(--sc-5); max-width: 32ch; color: var(--sc-ink-soft); font-size: var(--sc-t-lg); line-height: 1.4; }
+  .cta {
+    display: inline-flex; align-items: center; gap: var(--sc-2);
+    margin-top: var(--sc-6);
+    padding: 0.95rem 1.6rem;
+    background: var(--sc-accent); color: var(--sc-accent-ink);
+    font-weight: 600; text-decoration: none; white-space: nowrap;
+    border-radius: var(--sc-r-pill);
+    box-shadow: var(--sc-e2), var(--sc-edge);
+    transition: transform 140ms var(--sc-ease-out), box-shadow 180ms var(--sc-ease-out);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .cta:hover { transform: translateY(-2px); box-shadow: var(--sc-e3), var(--sc-edge); }
+  }
+  .cta:active { transform: scale(0.97); }
+
+  /* -------------------------------------------------------- tension ---- */
+  .roast { padding-block: clamp(3rem, 8vw, 7rem) clamp(4rem, 10vw, 9rem); }
+  .roast__grid { display: grid; gap: clamp(1.5rem, 5vh, 4rem); }
+  .roast p { margin: 0; font-family: var(--sc-font-display); line-height: 0.96; letter-spacing: -0.03em; text-wrap: balance; }
+  .roast .r1 { font-size: clamp(4rem, 2rem + 12vw, 13rem); font-weight: 900; font-stretch: 118%; }
+  .roast .r2 { font-size: var(--sc-t-2xl); font-weight: 500; max-width: 18ch; justify-self: end; text-align: right; }
+  .roast .r3 { font-family: var(--sc-font-text); font-size: var(--sc-t-lg); letter-spacing: 0; font-weight: 500; max-width: 26ch; }
+  .roast .r4 { font-size: clamp(2.6rem, 1.4rem + 5vw, 6.5rem); font-weight: 800; font-stretch: 90%; max-width: 14ch; }
+
+  /* ----------------------------------------------------------- turn ---- */
+  .turn { padding-block: clamp(2rem, 6vw, 5rem) clamp(4rem, 9vw, 8rem); }
+  .turn__wipe { padding-block: 0.08em 0.14em; }
+  .turn__word {
+    margin: 0; text-align: center;
+    font-family: var(--sc-font-display); font-weight: 900; font-stretch: 125%;
+    font-size: clamp(3.2rem, 13.6vw, 16rem); line-height: 1; letter-spacing: -0.045em;
+    color: var(--sc-ink);
+  }
+  .turn__body { margin-top: var(--sc-7); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--sc-7); align-items: start; }
+  .turn__body h2 { font-size: var(--sc-t-2xl); }
+  .turn__body .sc-body { color: var(--sc-ink-soft); }
+
+  .hush { height: 72vh; }
+
+  /* ----------------------------------------------------------- peak ---- */
+  .peak__stage { display: grid; place-items: center; }
+  .level {
+    position: absolute; inset: 0;
+    display: grid; align-content: center;
+    padding-inline: var(--sc-gutter);
+    padding-right: calc(var(--sc-gutter) + var(--rail-w));
+  }
+  .level__name {
+    margin: 0;
+    font-family: var(--sc-font-display); font-weight: 900; font-stretch: 125%;
+    font-size: clamp(4.4rem, 17vw, 19rem); line-height: 0.86; letter-spacing: -0.05em;
+  }
+  .level__meta {
+    margin-top: var(--sc-6);
+    display: grid; grid-template-columns: auto minmax(0, 34ch); gap: var(--sc-3) var(--sc-7); align-items: baseline;
+  }
+  .level__product { margin: 0; font-family: var(--sc-font-display); font-weight: 700; font-stretch: 100%; font-size: var(--sc-t-xl); letter-spacing: -0.015em; }
+  .level__line { margin: 0; color: var(--sc-ink-soft); font-size: var(--sc-t-lg); line-height: 1.4; }
+  .level:nth-child(even) { justify-items: end; text-align: right; }
+  .level:nth-child(even) .level__meta { grid-template-columns: minmax(0, 34ch) auto; }
+  .level:nth-child(even) .level__product { order: 2; }
+
+  /* --------------------------------------------------------- member ---- */
+  .member { padding-block: clamp(4rem, 10vw, 9rem); }
+  .member__grid { display: grid; grid-template-columns: 1fr; gap: var(--sc-7); }
+  .member__terms { justify-self: end; width: min(34rem, 100%); }
+  .member h2 { font-size: var(--sc-t-3xl); font-weight: 800; font-stretch: 105%; }
+  .member__price {
+    margin: var(--sc-5) 0 0;
+    font-family: var(--sc-font-display); font-weight: 900; font-stretch: 112%;
+    font-size: clamp(5rem, 2rem + 11vw, 13rem); line-height: 0.82; letter-spacing: -0.05em;
+  }
+  .member__price { white-space: nowrap; }
+  .member__price small { display: block; margin-top: var(--sc-3); font-family: var(--sc-font-text); font-size: var(--sc-t-lg); font-weight: 500; letter-spacing: 0; font-stretch: 100%; color: var(--sc-ink-soft); }
+  .member__terms { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--sc-hairline-strong); }
+  .member__terms li { padding-block: var(--sc-4); border-bottom: 1px solid var(--sc-hairline-strong); font-size: var(--sc-t-lg); line-height: 1.35; }
+  .member__terms span { display: block; color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin-top: var(--sc-1); }
+
+  /* ---------------------------------------------------------- close ---- */
+  .close { display: grid; place-items: center; text-align: center; }
+  .close__inner { display: grid; gap: var(--sc-3); justify-items: center; max-width: 34rem; padding-inline: var(--sc-gutter); }
+  .close__inner > p { margin: 0; font-size: var(--sc-t-sm); line-height: 1.55; color: var(--sc-ink-soft); }
+  .close__name { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-base) !important; color: var(--sc-ink) !important; letter-spacing: 0.02em; text-transform: uppercase; }
+  .close__book { font-size: var(--sc-t-base); font-weight: 600; color: var(--sc-ink); text-underline-offset: 0.3em; text-decoration-thickness: 1px; margin-top: var(--sc-2); padding: 0.4rem 0.2rem; border-radius: var(--sc-r-sm); }
+  .close__book:hover { text-decoration-thickness: 2px; }
+  .close a[href^="tel"] { text-underline-offset: 0.22em; }
+
+  /* --------------------------------------------------------- mobile ---- */
+  @media (max-width: 860px) {
+    :root { --rail-w: 0rem; }
+    .rail {
+      top: auto; bottom: 0; left: 0; right: 0; translate: none;
+      grid-auto-flow: column; justify-content: space-between; align-items: center;
+      padding: 0.4rem 0.5rem calc(0.4rem + env(safe-area-inset-bottom)); gap: 0.25rem;
+      background: color-mix(in oklab, var(--sc-canvas) 88%, transparent);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-top: 1px solid var(--sc-hairline);
+    }
+    .rail__list { grid-auto-flow: column; gap: 0; }
+    .rail__list .rail__label { display: none; }
+    .rail__list button { min-width: 2.4rem; min-height: 2.75rem; padding: 0; justify-content: center; }
+    .rail__line .rail__book { padding: 0.45rem 0.7rem !important; }
+    .rail__line { gap: 0.25rem; }
+    .rail__line button { padding-inline: 0.35rem; }
+    .rail__line { border: 0; padding: 0; grid-auto-flow: column; align-items: center; gap: var(--sc-2); }
+    .rail__line button { min-height: 2.75rem; }
+    .hero__word { top: 40%; font-size: 62vw; }
+    .hero__sun { width: 120vw; right: -40vw; bottom: -30vh; }
+    .hero .sc-copy { bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+    .hero h1 { font-size: clamp(2.9rem, 13vw, 4.4rem); }
+    .hero__sub { font-size: var(--sc-t-base); }
+    .roast .r2 { justify-self: start; text-align: left; }
+    .turn__body, .member__grid { grid-template-columns: 1fr; gap: var(--sc-6); }
+    .level { padding-bottom: 4rem; }
+    .level:nth-child(even) { justify-items: start; text-align: left; }
+    .level:nth-child(even) .level__meta, .level__meta { grid-template-columns: 1fr; }
+    .level:nth-child(even) .level__product { order: 0; }
+    .level__name { font-size: 17vw; }
+    .close { padding-bottom: 4.5rem; }
+  }
+  @media (max-width: 400px) { .rail__list li:first-child { display: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero__word, .hero__sun { transform: none !important; }
+    .strap { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+<div class="strap" id="strap" aria-hidden="true"><span class="strap__tag">your tan line</span></div>
+
+<nav class="rail" aria-label="Shade">
+  <ul class="rail__list" id="shades">
+    <li><button type="button" data-shade="0" style="--c:#F1E4D6"><span class="swatch"></span><span class="rail__label">Bare</span></button></li>
+    <li><button type="button" data-shade="1" style="--c:#D6A47A"><span class="swatch"></span><span class="rail__label">Basic</span></button></li>
+    <li><button type="button" data-shade="2" style="--c:#BC8352"><span class="swatch"></span><span class="rail__label">Premier</span></button></li>
+    <li><button type="button" data-shade="3" style="--c:#965F38"><span class="swatch"></span><span class="rail__label">Elite</span></button></li>
+    <li><button type="button" data-shade="4" style="--c:#6A3F25"><span class="swatch"></span><span class="rail__label">VIP</span></button></li>
+  </ul>
+  <div class="rail__line">
+    <button type="button" id="lineToggle" aria-pressed="false">Tan line</button>
+    <a class="rail__book" href="https://book.sunstudiotan.com">Book your tan</a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- 1 · RECOGNITION: pin, greet. Planes: sun (front light), SUN (back), copy (mid). -->
+  <section data-sc-act="pin" data-sc-span="1.6" data-tan="#F1E4D6" data-tan-p="0.2" data-shade-at="0" id="bare">
+    <div data-sc-stage class="hero">
+      <p class="hero__word" aria-hidden="true">SUN</p>
+      <div class="hero__sun" aria-hidden="true"></div>
+      <p class="hero__mark">Sun Studio Tan</p>
+      <div class="sc-copy sc-copy--lead" data-sc-cue="0 0.82 0">
+        <h1 class="sc-display" data-sc-kinetic="lines">Pale is <em>a choice.</em></h1>
+        <p class="hero__sub">Custom airbrush tans, applied by hand, in the Short North.</p>
+        <a class="cta" href="https://book.sunstudiotan.com">Book your tan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · TENSION: flow, type at four scales -->
+  <section class="roast" data-tan="#EDDCCB">
+    <div class="sc-wrap roast__grid" data-sc-in data-sc-stagger="70">
+      <p class="r1">It's Ohio.</p>
+      <p class="r2">The sun clocked out in September.</p>
+      <p class="r3">Your legs noticed. So did your group chat.</p>
+      <p class="r4">Good news. We don't need it.</p>
+    </div>
+  </section>
+
+  <!-- 3 · TURN: reveal. One pass of the gun, edge to edge. -->
+  <section class="turn" data-sc-act="flow" data-tan="#E2C09E">
+    <div class="turn__wipe" data-sc-reveal="right" data-sc-reveal-at="0.16 0.46">
+      <p class="turn__word">Airbrushed.</p>
+    </div>
+    <div class="sc-wrap turn__body">
+      <h2 class="sc-display" data-sc-in>Mist, not lotion. Matched to you.</h2>
+      <div class="sc-stack" data-sc-in data-sc-stagger="60">
+        <p class="sc-body">Every tan is sprayed by hand and built around your undertone, your schedule and how dark you actually want to go.</p>
+        <p class="sc-body">Joey has spent over twenty years doing this, opening salons in Studio City, New York, LA and Powell before bringing it home to North High Street.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Authored silence: ground only. See BRIEF.md. -->
+  <div class="hush" aria-hidden="true" data-tan="#DDB48A"></div>
+
+  <!-- 4 · PEAK: pin, the longest act. The page itself deepens. -->
+  <section data-sc-act="pin" data-sc-span="4.2" id="levels">
+    <span hidden data-tan="#D6A47A" data-tan-p="0.10" data-shade-at="1"></span>
+    <span hidden data-tan="#BC8352" data-tan-p="0.36" data-shade-at="2"></span>
+    <span hidden data-tan="#965F38" data-tan-p="0.62" data-shade-at="3"></span>
+    <span hidden data-tan="#6A3F25" data-tan-p="0.88" data-shade-at="4"></span>
+    <div data-sc-stage class="peak__stage">
+      <h2 class="sc-visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Four levels of tan</h2>
+      <article class="level" data-sc-cue="0 0.27 0">
+        <h3 class="level__name">Basic</h3>
+        <div class="level__meta">
+          <p class="level__product">Norvell Original</p>
+          <p class="level__line">The everyday glow. Looks like a good week of weather.</p>
+        </div>
+      </article>
+      <article class="level" data-sc-cue="0.23 0.52">
+        <h3 class="level__name">Premier</h3>
+        <div class="level__meta">
+          <p class="level__product">Venetian</p>
+          <p class="level__line">Deeper and sun-kissed. For when people should ask where you went.</p>
+        </div>
+      </article>
+      <article class="level" data-sc-cue="0.48 0.77">
+        <h3 class="level__name">Elite</h3>
+        <div class="level__meta">
+          <p class="level__product">Tuscan</p>
+          <p class="level__line">Rich bronze for the wedding, the stage, the big weekend.</p>
+        </div>
+      </article>
+      <article class="level" data-sc-cue="0.73 1 0.08 0.04">
+        <h3 class="level__name">VIP</h3>
+        <div class="level__meta">
+          <p class="level__product">Evolv Heated Custom</p>
+          <p class="level__line">Heated, fully custom, mixed around you. The full treatment.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 5 · SUBSTANCE: flow + count. The only real number on the page. -->
+  <section class="member" data-tan="#6A3F25">
+    <div class="sc-wrap member__grid">
+      <div data-sc-in>
+        <h2 class="sc-display">Spray &amp; Save.</h2>
+        <p class="member__price" aria-label="$9.99 a month">$<span data-sc-count="0 9.99" data-sc-count-ms="1300">9.99</span><small>a month</small></p>
+      </div>
+      <ul class="member__terms" data-sc-in data-sc-stagger="60">
+        <li>One tan included every month.<span>Any level.</span></li>
+        <li>30% off every extra.<span>Second tans, upgrades, add-ons.</span></li>
+        <li>2-Hour Rinse on any tan: +$9.<span>Shower sooner, same result.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6 · COMMITMENT: pin, the smallest type on the site, held. -->
+  <section data-sc-act="pin" data-sc-span="1.25" id="book">
+    <div data-sc-stage class="close">
+      <div class="close__inner" data-sc-cue="0.04">
+        <p class="close__name">Sun Studio Tan</p>
+        <p>612 North High Street, Short North, Columbus, Ohio<br><a href="tel:+16143330051">614-333-0051</a></p>
+        <a class="close__book" href="https://book.sunstudiotan.com">Book your tan</a>
+        <p>Bleach Bright LED teeth whitening, too.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script>ScrollCraft.mount(document.body);</script>
+<script>
+/* The page's own tan. Not an engine device: every [data-tan] is an anchor on a
+   scroll-to-skin map, the ground and ink are written from it each frame, and
+   the strap shows the gap between --bare and wherever the visitor is now. */
+(function () {
+  var root = document.documentElement;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var strap = document.getElementById('strap');
+  var toggle = document.getElementById('lineToggle');
+  var shadeBtns = [].slice.call(document.querySelectorAll('[data-shade]'));
+  var anchors = [], shadeY = [], lastShade = -1;
+
+  function hex(h) { h = h.replace('#', ''); return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)]; }
+  function toHex(c) { return '#' + c.map(function (v) { return ('0' + Math.round(v).toString(16)).slice(-2); }).join(''); }
+  function mix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+  function lum(c) {
+    var s = c.map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    return 0.2126 * s[0] + 0.7152 * s[1] + 0.0722 * s[2];
+  }
+  function docTop(el) { var r = el.getBoundingClientRect(); return r.top + scrollY; }
+
+  var DARK = hex('#2B1A10'), LIGHT = hex('#FFF4E8'), BARE = hex('#F1E4D6');
+
+  function measure() {
+    var vh = innerHeight;
+    anchors = []; shadeY = [];
+    [].forEach.call(document.querySelectorAll('[data-tan]'), function (el) {
+      var p = el.getAttribute('data-tan-p'), y;
+      var act = el.closest('[data-sc-act]');
+      if (p !== null && act) {
+        var top = docTop(act), h = act.offsetHeight;
+        y = top + parseFloat(p) * Math.max(h - vh, 1);
+      } else {
+        y = docTop(el) - vh * 0.55;
+      }
+      anchors.push({ y: y, c: hex(el.getAttribute('data-tan')) });
+      var s = el.getAttribute('data-shade-at');
+      if (s !== null) shadeY[+s] = Math.max(0, y);
+    });
+    anchors.sort(function (a, b) { return a.y - b.y; });
+  }
+
+  function groundAt(y) {
+    if (!anchors.length) return BARE;
+    if (y <= anchors[0].y) return anchors[0].c;
+    for (var i = 1; i < anchors.length; i++) {
+      if (y <= anchors[i].y) {
+        var a = anchors[i - 1], b = anchors[i];
+        var t = (y - a.y) / Math.max(b.y - a.y, 1);
+        t = t * t * (3 - 2 * t);
+        return mix(a.c, b.c, t);
+      }
+    }
+    return anchors[anchors.length - 1].c;
+  }
+
+  var lastHex = '';
+  function paint() {
+    var g = groundAt(scrollY), L = lum(g);
+    var h = toHex(g);
+    if (h === lastHex) return;
+    lastHex = h;
+    var ink = L < 0.195 ? LIGHT : DARK;
+    root.style.setProperty('--sc-canvas', h);
+    root.style.setProperty('--sc-ink', toHex(ink));
+    root.style.setProperty('--sc-ink-soft', toHex(mix(ink, g, 0.14)));
+    root.style.setProperty('--sc-surface', toHex(mix(g, ink, 0.06)));
+    /* The strap's label only earns its place once there is a line to see. */
+    var gap = Math.min(1, Math.max(0, (lum(BARE) - L - 0.18) / 0.3));
+    root.style.setProperty('--strap-tag', gap.toFixed(2));
+    strap.setAttribute('data-sc-verify-state', h);
+
+    var cur = 0;
+    for (var i = 0; i < shadeY.length; i++) if (shadeY[i] !== undefined && scrollY >= shadeY[i] - innerHeight * 0.3) cur = i;
+    if (cur !== lastShade) {
+      lastShade = cur;
+      shadeBtns.forEach(function (b) { b.setAttribute('aria-current', +b.getAttribute('data-shade') === cur ? 'true' : 'false'); });
+    }
+  }
+
+  /* --- the strap follows the pointer, lerped, so it moves like fabric --- */
+  var sx = innerWidth * 0.5, tx = sx, pinned = false, raf = 0;
+  function loop() {
+    sx += (tx - sx) * (reduce ? 1 : 0.14);
+    root.style.setProperty('--strap-x', sx.toFixed(1) + 'px');
+    if (Math.abs(tx - sx) > 0.3) raf = requestAnimationFrame(loop); else raf = 0;
+  }
+  function aim(x) { tx = x; if (!raf) raf = requestAnimationFrame(loop); }
+
+  if (fine && !reduce) {
+    addEventListener('pointermove', function (e) { if (!pinned) { aim(e.clientX); strap.classList.add('is-on'); } }, { passive: true });
+    document.addEventListener('pointerleave', function () { if (!pinned) strap.classList.remove('is-on'); });
+  }
+
+  var hideTimer = 0;
+  toggle.addEventListener('click', function () {
+    pinned = toggle.getAttribute('aria-pressed') !== 'true';
+    toggle.setAttribute('aria-pressed', pinned ? 'true' : 'false');
+    clearTimeout(hideTimer);
+    if (pinned) {
+      aim(innerWidth * (innerWidth > 860 ? 0.62 : 0.5));
+      strap.classList.add('is-on');
+      if (!fine) hideTimer = setTimeout(function () { toggle.click(); }, 4000);
+    } else if (!fine || reduce) {
+      strap.classList.remove('is-on');
+    }
+  });
+
+  shadeBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var y = shadeY[+b.getAttribute('data-shade')] || 0;
+      scrollTo({ top: y + 2, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  });
+
+  var ticking = false;
+  addEventListener('scroll', function () {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () { ticking = false; paint(); });
+  }, { passive: true });
+  function remeasure() { measure(); lastHex = ''; paint(); }
+  addEventListener('resize', remeasure);
+  addEventListener('load', remeasure);
+  if (document.fonts) document.fonts.ready.then(remeasure);
+  remeasure();
+})();
+</script>
+</body>
+</html>
