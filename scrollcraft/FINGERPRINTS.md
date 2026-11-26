@@ -29,8 +29,6 @@ changes only grammar and world will fail it.
 | Build | Grammar | Nav treatment | Hero device | Act-sequence shape | Close pattern | Signature move | World | Port |
 |---|---|---|---|---|---|---|---|---|
 | sun-studio-tan | Typographic poster | Shade rail: five skin swatches (Bare to VIP) that jump, plus Tan line toggle and Book; bottom bar on phones | Pinned greet: giant SUN back plane scaling from --sc-p, sun-glow front plane, lead-corner headline | pin > flow > reveal > silence > pin(peak 4.2) > flow+count > pin; 6 acts + authored silence, ~10.5vh | Smallest type on the site, centred, held; CTA as underlined running link | The page's ground tans scroll-by-scroll and a pale tan-line strap follows the pointer | Skin-tone grounds, no photography | 4500 |
-*(empty: your first build has nothing to clear, so build whatever the interview
-points at. From the second onwards, this table is the constraint.)*
 
 ---
 
