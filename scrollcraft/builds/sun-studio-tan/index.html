@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sun Studio Tan · Custom airbrush tans in the Short North</title>
-<meta name="description" content="Custom airbrush spray tans by hand at 612 North High Street, Columbus. Four levels, from Norvell Original to Evolv Heated Custom. Spray & Save membership $9.99 a month.">
+<meta name="description" content="Custom airbrush spray tans by hand at 612 North High Street, Columbus. Three levels: BASE $42, BUILD $52 and our signature heated Evolv BRONZED $62. Spray & Save membership $9.99 a month.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23F1E4D6'/><rect x='13' width='6' height='32' fill='%236A3F25'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -181,7 +181,7 @@
   .level__name {
     margin: 0;
     font-family: var(--sc-font-display); font-weight: 900; font-stretch: 125%;
-    font-size: clamp(4.4rem, 17vw, 19rem); line-height: 0.86; letter-spacing: -0.05em;
+    font-size: clamp(3.6rem, 12.5vw, 14rem); line-height: 0.86; letter-spacing: -0.05em;
   }
   .level__meta {
     margin-top: var(--sc-6);
@@ -194,6 +194,38 @@
   .level:nth-child(even) .level__product { order: 2; }
 
   /* --------------------------------------------------------- member ---- */
+  .level__price {
+    margin: var(--sc-5) 0 0; display: flex; flex-wrap: wrap; gap: var(--sc-2) var(--sc-6);
+    font-size: var(--sc-t-lg); color: var(--sc-ink-soft);
+  }
+  .level__price b { color: var(--sc-ink); font-family: var(--sc-font-display); font-weight: 800; font-size: 1.35em; letter-spacing: -0.02em; }
+  .level__price small { display: block; font-size: var(--sc-t-xs); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 0.15rem; }
+  .level:nth-child(even) .level__price { justify-content: flex-end; }
+  .level__name { white-space: nowrap; }
+  .member .sc-display { font-size: var(--sc-t-3xl); font-weight: 800; font-stretch: 105%; max-width: 16ch; }
+  .prices { width: 100%; margin-top: var(--sc-7); border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  .prices caption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .prices th, .prices td { padding: var(--sc-4) var(--sc-3); border-bottom: 1px solid var(--sc-hairline-strong); text-align: right; }
+  .prices thead th { font-size: var(--sc-t-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--sc-ink-soft); font-weight: 500; }
+  .prices th:first-child { text-align: left; padding-left: 0; }
+  .prices tbody th { font-family: var(--sc-font-display); font-weight: 700; font-size: var(--sc-t-xl); letter-spacing: -0.015em; }
+  .prices tbody th small { display: block; font-family: var(--sc-font-text); font-weight: 500; font-size: var(--sc-t-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--sc-ink-soft); margin-top: 0.2rem; }
+  .prices td { font-size: var(--sc-t-lg); }
+  .prices td:nth-child(2) { text-align: left; color: var(--sc-ink-soft); }
+  .prices td:last-child { font-family: var(--sc-font-display); font-weight: 800; font-size: var(--sc-t-xl); }
+  .member__save { margin-top: var(--sc-8); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--sc-7); align-items: end; }
+  .member__save-title { margin: 0; font-family: var(--sc-font-display); font-weight: 800; font-size: var(--sc-t-2xl); letter-spacing: -0.02em; }
+  @media (max-width: 860px) {
+    .prices thead { display: none; }
+    .prices, .prices tbody, .prices tr { display: block; }
+    .prices tr { display: grid; grid-template-columns: 1fr 1fr; padding-block: var(--sc-4); border-bottom: 1px solid var(--sc-hairline-strong); }
+    .prices th, .prices td { border: 0; padding: var(--sc-1) 0; text-align: left; }
+    .prices tbody th { grid-column: 1 / -1; margin-bottom: var(--sc-2); }
+    .prices td::before { content: attr(data-label); display: block; font-size: var(--sc-t-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--sc-ink-soft); }
+    .member__save { grid-template-columns: 1fr; }
+    .level__price { font-size: var(--sc-t-base); }
+    .level:nth-child(even) .level__price { justify-content: flex-start; }
+  }
   .member { padding-block: clamp(4rem, 10vw, 9rem); }
   .member__grid { display: grid; grid-template-columns: 1fr; gap: var(--sc-7); }
   .member__terms { justify-self: end; width: min(34rem, 100%); }
@@ -201,10 +233,10 @@
   .member__price {
     margin: var(--sc-5) 0 0;
     font-family: var(--sc-font-display); font-weight: 900; font-stretch: 112%;
-    font-size: clamp(5rem, 2rem + 11vw, 13rem); line-height: 0.82; letter-spacing: -0.05em;
+    font-size: clamp(4rem, 2rem + 6vw, 8rem); line-height: 0.82; letter-spacing: -0.05em;
   }
   .member__price { white-space: nowrap; }
-  .member__price small { display: block; margin-top: var(--sc-3); font-family: var(--sc-font-text); font-size: var(--sc-t-lg); font-weight: 500; letter-spacing: 0; font-stretch: 100%; color: var(--sc-ink-soft); }
+  .member__price small { display: block; margin-top: var(--sc-3); font-family: var(--sc-font-text); font-size: var(--sc-t-lg); font-weight: 500; letter-spacing: 0; font-stretch: 100%; color: var(--sc-ink-soft); white-space: normal; line-height: 1.4; max-width: 30ch; }
   .member__terms { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--sc-hairline-strong); }
   .member__terms li { padding-block: var(--sc-4); border-bottom: 1px solid var(--sc-hairline-strong); font-size: var(--sc-t-lg); line-height: 1.35; }
   .member__terms span { display: block; color: var(--sc-ink-soft); font-size: var(--sc-t-sm); margin-top: var(--sc-1); }
@@ -230,7 +262,7 @@
       border-top: 1px solid var(--sc-hairline);
     }
     .rail__list { grid-auto-flow: column; gap: 0; }
-    .rail__list .rail__label { display: none; }
+    .rail__list .rail__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     .rail__list button { min-width: 2.4rem; min-height: 2.75rem; padding: 0; justify-content: center; }
     .rail__line .rail__book { padding: 0.45rem 0.7rem !important; }
     .rail__line { gap: 0.25rem; }
@@ -248,7 +280,7 @@
     .level:nth-child(even) { justify-items: start; text-align: left; }
     .level:nth-child(even) .level__meta, .level__meta { grid-template-columns: 1fr; }
     .level:nth-child(even) .level__product { order: 0; }
-    .level__name { font-size: 17vw; }
+    .level__name { font-size: 12.5vw; }
     .close { padding-bottom: 4.5rem; }
   }
   @media (max-width: 400px) { .rail__list li:first-child { display: none; } }
@@ -267,14 +299,13 @@
 <nav class="rail" aria-label="Shade">
   <ul class="rail__list" id="shades">
     <li><button type="button" data-shade="0" style="--c:#F1E4D6"><span class="swatch"></span><span class="rail__label">Bare</span></button></li>
-    <li><button type="button" data-shade="1" style="--c:#D6A47A"><span class="swatch"></span><span class="rail__label">Basic</span></button></li>
-    <li><button type="button" data-shade="2" style="--c:#BC8352"><span class="swatch"></span><span class="rail__label">Premier</span></button></li>
-    <li><button type="button" data-shade="3" style="--c:#965F38"><span class="swatch"></span><span class="rail__label">Elite</span></button></li>
-    <li><button type="button" data-shade="4" style="--c:#6A3F25"><span class="swatch"></span><span class="rail__label">VIP</span></button></li>
+    <li><button type="button" data-shade="1" style="--c:#D6A47A"><span class="swatch"></span><span class="rail__label">BASE</span></button></li>
+    <li><button type="button" data-shade="2" style="--c:#8C5C46"><span class="swatch"></span><span class="rail__label">BUILD</span></button></li>
+    <li><button type="button" data-shade="3" style="--c:#6A3F25"><span class="swatch"></span><span class="rail__label">BRONZED</span></button></li>
   </ul>
   <div class="rail__line">
     <button type="button" id="lineToggle" aria-pressed="false">Tan line</button>
-    <a class="rail__book" href="https://book.sunstudiotan.com">Book your tan</a>
+    <a class="rail__book" href="https://book.sunstudiotan.com">Book Your Tan</a>
   </div>
 </nav>
 
@@ -289,7 +320,7 @@
       <div class="sc-copy sc-copy--lead" data-sc-cue="0 0.82 0">
         <h1 class="sc-display" data-sc-kinetic="lines">Pale is <em>a choice.</em></h1>
         <p class="hero__sub">Custom airbrush tans, applied by hand, in the Short North.</p>
-        <a class="cta" href="https://book.sunstudiotan.com">Book your tan</a>
+        <a class="cta" href="https://book.sunstudiotan.com">Book Your Tan</a>
       </div>
     </div>
   </section>
@@ -322,56 +353,63 @@
   <div class="hush" aria-hidden="true" data-tan="#DDB48A"></div>
 
   <!-- 4 · PEAK: pin, the longest act. The page itself deepens. -->
-  <section data-sc-act="pin" data-sc-span="4.2" id="levels">
-    <span hidden data-tan="#D6A47A" data-tan-p="0.10" data-shade-at="1"></span>
-    <span hidden data-tan="#BC8352" data-tan-p="0.36" data-shade-at="2"></span>
-    <span hidden data-tan="#965F38" data-tan-p="0.62" data-shade-at="3"></span>
-    <span hidden data-tan="#6A3F25" data-tan-p="0.88" data-shade-at="4"></span>
+  <section data-sc-act="pin" data-sc-span="3.8" id="levels">
+    <span hidden data-tan="#D6A47A" data-tan-p="0.14" data-shade-at="1"></span>
+    <span hidden data-tan="#8C5C46" data-tan-p="0.50" data-shade-at="2"></span>
+    <span hidden data-tan="#6A3F25" data-tan-p="0.86" data-shade-at="3"></span>
     <div data-sc-stage class="peak__stage">
-      <h2 class="sc-visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Four levels of tan</h2>
-      <article class="level" data-sc-cue="0 0.27 0">
-        <h3 class="level__name">Basic</h3>
+      <h2 class="sc-visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Three tan levels</h2>
+      <article class="level" data-sc-cue="0 0.36 0">
+        <h3 class="level__name">BASE</h3>
         <div class="level__meta">
           <p class="level__product">Norvell Original</p>
-          <p class="level__line">The everyday glow. Looks like a good week of weather.</p>
+          <p class="level__line">A classic, understated sun-kissed finish. Your everyday glow.</p>
         </div>
+        <p class="level__price"><span><b>$42</b> a tan</span></p>
       </article>
-      <article class="level" data-sc-cue="0.23 0.52">
-        <h3 class="level__name">Premier</h3>
+      <article class="level" data-sc-cue="0.31 0.69">
+        <h3 class="level__name">BUILD</h3>
         <div class="level__meta">
-          <p class="level__product">Venetian</p>
-          <p class="level__line">Deeper and sun-kissed. For when people should ask where you went.</p>
+          <p class="level__product">Norvell Venetian</p>
+          <p class="level__line">A violet-brown, olive-inspired finish with more depth. Pull warm, or gone orange before? Ask about this one.</p>
         </div>
+        <p class="level__price"><span><b>$52</b> a tan</span></p>
       </article>
-      <article class="level" data-sc-cue="0.48 0.77">
-        <h3 class="level__name">Elite</h3>
+      <article class="level" data-sc-cue="0.64 1 0.08 0.04">
+        <h3 class="level__name">BRONZED</h3>
         <div class="level__meta">
-          <p class="level__product">Tuscan</p>
-          <p class="level__line">Rich bronze for the wedding, the stage, the big weekend.</p>
+          <p class="level__product">Heated Evolv airbrush</p>
+          <p class="level__line">Our signature. Applied warm and custom-finished to your skin tone and the depth you want.</p>
         </div>
-      </article>
-      <article class="level" data-sc-cue="0.73 1 0.08 0.04">
-        <h3 class="level__name">VIP</h3>
-        <div class="level__meta">
-          <p class="level__product">Evolv Heated Custom</p>
-          <p class="level__line">Heated, fully custom, mixed around you. The full treatment.</p>
-        </div>
+        <p class="level__price"><span><b>$62</b> a tan</span></p>
       </article>
     </div>
   </section>
 
-  <!-- 5 · SUBSTANCE: flow + count. The only real number on the page. -->
-  <section class="member" data-tan="#6A3F25">
-    <div class="sc-wrap member__grid">
-      <div data-sc-in>
-        <h2 class="sc-display">Spray &amp; Save.</h2>
-        <p class="member__price" aria-label="$9.99 a month">$<span data-sc-count="0 9.99" data-sc-count-ms="1300">9.99</span><small>a month</small></p>
+  <!-- 5 · SUBSTANCE: flow. Real prices from the current booking menu. -->
+  <section class="member" id="pricing" data-tan="#6A3F25">
+    <div class="sc-wrap">
+      <h2 class="sc-display" data-sc-in>Pick your shade. Pick your plan.</h2>
+      <table class="prices" data-sc-in>
+        <caption>Airbrush tan pricing</caption>
+        <thead><tr><th scope="col">Level</th><th scope="col">Formula</th><th scope="col">Single</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">BASE<small>Everyday glow</small></th><td data-label="Formula">Norvell Original</td><td data-label="Single">$42</td></tr>
+          <tr><th scope="row">BUILD<small>More depth</small></th><td data-label="Formula">Norvell Venetian</td><td data-label="Single">$52</td></tr>
+          <tr><th scope="row">BRONZED<small>Signature</small></th><td data-label="Formula">Heated Evolv airbrush</td><td data-label="Single">$62</td></tr>
+        </tbody>
+      </table>
+      <div class="member__save" data-sc-in data-sc-stagger="60">
+        <div>
+          <h3 class="member__save-title">Spray &amp; Save</h3>
+          <p class="member__price" aria-label="$9.99 a month">$<span data-sc-count="0 9.99" data-sc-count-ms="1300">9.99</span><small>a month. One BASE tan every month, 30% off additional tans. $30 annual facility fee.</small></p>
+        </div>
+        <ul class="member__terms">
+          <li>Unlimited BASE, BUILD and BRONZED.<span>Unlimited memberships for every level. See current rates when you book. One-month minimum, cancel anytime after from your member account.</span></li>
+          <li>LED teeth whitening: $139.<span>One 30-minute BleachBright session.</span></li>
+          <li>Bridal Trial: $125.<span>Give us the date and we&rsquo;ll plan the trial and the final tan around it.</span></li>
+        </ul>
       </div>
-      <ul class="member__terms" data-sc-in data-sc-stagger="60">
-        <li>One tan included every month.<span>Any level.</span></li>
-        <li>30% off every extra.<span>Second tans, upgrades, add-ons.</span></li>
-        <li>2-Hour Rinse on any tan: +$9.<span>Shower sooner, same result.</span></li>
-      </ul>
     </div>
   </section>
 
@@ -380,9 +418,10 @@
     <div data-sc-stage class="close">
       <div class="close__inner" data-sc-cue="0.04">
         <p class="close__name">Sun Studio Tan</p>
-        <p>612 North High Street, Short North, Columbus, Ohio<br><a href="tel:+16143330051">614-333-0051</a></p>
-        <a class="close__book" href="https://book.sunstudiotan.com">Book your tan</a>
-        <p>Bleach Bright LED teeth whitening, too.</p>
+        <p>Upstairs at 612 North High Street, Short North, Columbus, Ohio<br>Call or text <a href="tel:+16143330051">614-333-0051</a></p>
+        <p>Validated parking at The Joseph Garage on Russell Street.</p>
+        <a class="close__book" href="https://book.sunstudiotan.com">Book Your Tan</a>
+        <p>BleachBright LED teeth whitening, too.</p>
       </div>
     </div>
   </section>
@@ -411,6 +450,7 @@
     var s = c.map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
     return 0.2126 * s[0] + 0.7152 * s[1] + 0.0722 * s[2];
   }
+  function ratio(a, b) { var x = lum(a) + 0.05, y = lum(b) + 0.05; return x > y ? x / y : y / x; }
   function docTop(el) { var r = el.getBoundingClientRect(); return r.top + scrollY; }
 
   var DARK = hex('#2B1A10'), LIGHT = hex('#FFF4E8'), BARE = hex('#F1E4D6');
@@ -442,7 +482,18 @@
         var a = anchors[i - 1], b = anchors[i];
         var t = (y - a.y) / Math.max(b.y - a.y, 1);
         t = t * t * (3 - 2 * t);
-        return mix(a.c, b.c, t);
+        var c = mix(a.c, b.c, t);
+        /* Between a light and a dark stop there is a band of mid-tones where
+           neither ink clears 4.5:1. Step across it instead of lingering. */
+        if (Math.max(ratio(LIGHT, c), ratio(DARK, c)) < 4.85) {
+          var lo = t, hi = t, n = 0;
+          while (n++ < 60) {
+            lo = Math.max(0, lo - 0.01); hi = Math.min(1, hi + 0.01);
+            if (Math.max(ratio(LIGHT, mix(a.c, b.c, lo)), ratio(DARK, mix(a.c, b.c, lo))) >= 4.85) { c = mix(a.c, b.c, lo); break; }
+            if (Math.max(ratio(LIGHT, mix(a.c, b.c, hi)), ratio(DARK, mix(a.c, b.c, hi))) >= 4.85) { c = mix(a.c, b.c, hi); break; }
+          }
+        }
+        return c;
       }
     }
     return anchors[anchors.length - 1].c;
@@ -454,10 +505,14 @@
     var h = toHex(g);
     if (h === lastHex) return;
     lastHex = h;
-    var ink = L < 0.195 ? LIGHT : DARK;
+    /* Pick whichever ink contrasts more, then soften the secondary ink only
+       as far as it still clears 4.5:1 on this exact ground. */
+    var ink = ratio(LIGHT, g) > ratio(DARK, g) ? LIGHT : DARK;
+    var soft = ink;
+    for (var k = 0.16; k > 0; k -= 0.02) { var c = mix(ink, g, k); if (ratio(c, g) >= 4.85) { soft = c; break; } }
     root.style.setProperty('--sc-canvas', h);
     root.style.setProperty('--sc-ink', toHex(ink));
-    root.style.setProperty('--sc-ink-soft', toHex(mix(ink, g, 0.14)));
+    root.style.setProperty('--sc-ink-soft', toHex(soft));
     root.style.setProperty('--sc-surface', toHex(mix(g, ink, 0.06)));
     /* The strap's label only earns its place once there is a line to see. */
     var gap = Math.min(1, Math.max(0, (lum(BARE) - L - 0.18) / 0.3));

@@ -10,13 +10,22 @@ recorded below as accepted assumptions, not as Joey's words. Anything marked
 
 - Sun Studio Tan, 612 North High Street, Columbus, OH (Short North). 614-333-0051.
 - Owner Joey Anthony: 20+ years in tanning; launched and ran salons in Studio City, NYC, LA, Powell OH.
-- Airbrush tanning. Levels: Basic (Norvell Original), Premier (Venetian), Elite (Tuscan), VIP (Evolv Heated Custom).
+- Airbrush tanning, canonical price sheet (from the sun-studio-ops / sun-studio-messaging skills, confirmed by Joey as the correct lineup):
+
+  | Level | Solution | Single | Unlimited/mo | 30-Day Pass | 3-Pack |
+  |---|---|---|---|---|---|
+  | Norvell Basic | Norvell Original | $42 | $47 (BASE) | $102 | $96 |
+  | Venetian Premier | Venetian | $54 | $70 (BUILD) | $119 | $138 |
+  | Tuscan Elite | Tuscan | $60 | $94 (BRONZED) | $142 | $155 |
+  | Evolv VIP | Evolv Heated Custom | $65 | $109 (VIP) | $155 | $166 |
+
 - Spray & Save membership: $9.99/month, one tan included, 30% off extras.
+- Annual facility fee on memberships: $30.
 - Add-on: 2-Hour Rinse, +$9 on any tan.
 - Also offered: Bleach Bright LED teeth whitening (from $139).
 - Booking: https://book.sunstudiotan.com
 
-No per-level prices were supplied, so the page shows none. No review counts,
+Per-level prices come from the canonical sheet above. No review counts,
 client numbers, or session times either, so there are no counters except the real $9.99.
 
 ## The eight topics
