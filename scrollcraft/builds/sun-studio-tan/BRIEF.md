@@ -10,19 +10,21 @@ recorded below as accepted assumptions, not as Joey's words. Anything marked
 
 - Sun Studio Tan, 612 North High Street, Columbus, OH (Short North). 614-333-0051.
 - Owner Joey Anthony: 20+ years in tanning; launched and ran salons in Studio City, NYC, LA, Powell OH.
-- Airbrush tanning, canonical price sheet (from the sun-studio-ops / sun-studio-messaging skills, confirmed by Joey as the correct lineup):
+- Airbrush tanning, current lineup (Sun Studio Tan Business and Brand Report, Nov 26 2026, from the public booking menu):
 
-  | Level | Solution | Single | Unlimited/mo | 30-Day Pass | 3-Pack |
-  |---|---|---|---|---|---|
-  | Norvell Basic | Norvell Original | $42 | $47 (BASE) | $102 | $96 |
-  | Venetian Premier | Venetian | $54 | $70 (BUILD) | $119 | $138 |
-  | Tuscan Elite | Tuscan | $60 | $94 (BRONZED) | $142 | $155 |
-  | Evolv VIP | Evolv Heated Custom | $65 | $109 (VIP) | $155 | $166 |
+  | Level | Formula | Single |
+  |---|---|---|
+  | BASE | Norvell Original | $42 |
+  | BUILD | Norvell Venetian (violet-brown) | $52 |
+  | BRONZED (signature) | Heated Evolv airbrush | $62 |
 
-- Spray & Save membership: $9.99/month, one tan included, 30% off extras.
-- Annual facility fee on memberships: $30.
-- Add-on: 2-Hour Rinse, +$9 on any tan.
-- Also offered: Bleach Bright LED teeth whitening (from $139).
+  The older four-level sheet (Norvell Basic / Venetian Premier / Tuscan Elite / Evolv VIP)
+  in the sun-studio-ops and sun-studio-messaging skills is superseded.
+- Spray & Save: $9.99/month, one BASE tan a month, 30% off additional tans, $30 annual facility fee.
+- Unlimited BASE, BUILD and BRONZED memberships exist; monthly rates conflict across sources, so the
+  page sends people to the booking site for current rates. Same for Express rinse and Wellness Boost prices.
+- LED teeth whitening $139 (30 min). Bridal Trial $125.
+- Upstairs at 612 N High St; validated parking at The Joseph Garage on Russell Street.
 - Booking: https://book.sunstudiotan.com
 
 Per-level prices come from the canonical sheet above. No review counts,
@@ -32,10 +34,10 @@ client numbers, or session times either, so there are no counters except the rea
 
 1. **Vibe:** golden hour, glossy, confident, a little cheeky. References: a Fenty
    Beauty campaign, the summer light in *Call Me By Your Name*, a Broadway curtain-up.
-2. **Journey:** pale winter skin, then the airbrush moment, then the four tan levels, then
+2. **Journey:** pale winter skin, then the airbrush moment, then the three tan levels, then
    Spray & Save at $9.99, then book.
 3. **Energy:** calm open, building to a big reveal mid-page, confident and steady at the close.
-4. **Feeling and the one moment:** the visitor scrolls and the skin deepens, Basic to VIP,
+4. **Feeling and the one moment:** the visitor scrolls and the skin deepens, BASE to BRONZED,
    under their thumb.
 5. **What no other site does:** scroll is the shade picker. The page tans as you go.
 6. **Range:** editorial with a theatrical streak. *Authored:* realised as a typographic poster,
@@ -67,7 +69,7 @@ ground can be the protagonist. Why the other seven lost:
 2  Tension       the honest roast: the sun left, your legs noticed
 3  Turn          one airbrush pass and the word goes on in a single sweep
    (silence)     a warm, empty viewport: authored, the breath before the drop
-4  Range/Peak    four levels; the whole page deepens Basic, Premier, Elite, VIP
+4  Range/Peak    three levels; the whole page deepens BASE, BUILD, BRONZED
 5  Substance     $9.99 a month, plainly
 6  Commitment    the quietest type on the site, one link: Book your tan
 ```
@@ -79,7 +81,7 @@ ground can be the protagonist. Why the other seven lost:
 2  Amusement     short lines at mixed scale that roast the Ohio winter
 3  Delight       a hard wipe paints AIRBRUSHED across the screen; the ground warms one step
    Anticipation  authored silence: warm ground, no copy, ~0.7 viewport
-4  Awe           the ground deepens through four shades as each level name lands at poster scale
+4  Awe           the ground deepens through three shades as each level name lands at poster scale
 5  Relief        the price is small and fair: $9.99, one tan, 30% off extras
 6  Resolve       everything gets small and still; address, phone, one underlined link
 ```
